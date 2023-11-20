@@ -15,6 +15,7 @@ class Tile(pygame.sprite.Sprite):
         # Upadates the position of the tile to simulate scrolling
         self.rect.x += x_shift
         
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
@@ -38,6 +39,7 @@ class Player(pygame.sprite.Sprite):
         self.on_left = False
         self.on_right = False
 
+
     def import_character_assets(self):
         character_path = 'graphics/character/'
         
@@ -46,6 +48,7 @@ class Player(pygame.sprite.Sprite):
         for animation in self.animations.keys():
             full_path = character_path +  animation
             self.animations[animation] = import_folder(full_path)
+
 
     def animate(self):
         animation = self.animations[self.status]
@@ -77,6 +80,7 @@ class Player(pygame.sprite.Sprite):
         elif self.on_ground and keys[pygame.K_w]:
             self.jump()
 
+
     def get_status(self):
         if self.direction.y < 0:
             self.status = 'jump'
@@ -90,18 +94,22 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.status = 'idle'
 
+
     def apply_gravity(self):
         self.direction.y += self.gravity
         self.rect.y += self.direction.y
 
+
     def jump(self):
         self.direction.y = self.jump_speed
+
 
     def update(self):
         # Updates player attributes based on input, status and animation
         self.get_input()
         self.get_status()
         self.animate()
+
 
 class Level:
     def __init__(self, level_data, surface):
@@ -110,6 +118,7 @@ class Level:
         self.setup_level(level_data)
         self.world_shift = 0
         self.current_x = 0
+
 
     def setup_level(self, layout):
         # Initialization of data structures for tiles and player
@@ -133,6 +142,7 @@ class Level:
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
 
+
     def scroll_x(self):
         player = self.player.sprite
         player_x = player.rect.centerx
@@ -149,6 +159,7 @@ class Level:
         else:
             self.world_shift = 0
             player.speed = 8
+
 
     def horizontal_movement_collision(self):
         player = self.player.sprite
@@ -171,6 +182,7 @@ class Level:
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
             player.on_right = False
 
+
     def vertical_movement_collision(self):
         player = self.player.sprite
         player.apply_gravity()
@@ -191,6 +203,7 @@ class Level:
         if player.on_ceiling and player.direction.y > 0:
             player.on_ceiling = False
 
+
     def run(self):
             # Level tiles
             self.tiles.update(self.world_shift)
@@ -202,6 +215,7 @@ class Level:
             self.horizontal_movement_collision()
             self.vertical_movement_collision()
             self.player.draw(self.display_surface)
+
 
 def import_folder(path):
     surface_list = []
@@ -215,6 +229,36 @@ def import_folder(path):
     return surface_list
 
 
+# Button made for game's MAIN MENU 
+class Button():
+	def __init__(self, image, pos, text_input, font, base_color, hovering_color):
+		self.image = image
+		self.x_pos = pos[0]
+		self.y_pos = pos[1]
+		self.font = font
+		self.base_color, self.hovering_color = base_color, hovering_color
+		self.text_input = text_input
+		self.text = self.font.render(self.text_input, True, self.base_color)
+		if self.image is None:
+			self.image = self.text
+		self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
+		self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
+
+	def update(self, screen):
+		if self.image is not None:
+			screen.blit(self.image, self.rect)
+		screen.blit(self.text, self.text_rect)
+
+	def checkForInput(self, position):
+		if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
+			return True
+		return False
+
+	def changeColor(self, position):
+		if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
+			self.text = self.font.render(self.text_input, True, self.hovering_color)
+		else:
+			self.text = self.font.render(self.text_input, True, self.base_color)
 
 ################################
 
