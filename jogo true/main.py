@@ -12,4 +12,5 @@ pygame.display.set_caption("Menu")
 pygame.init()
 
 menu = Menu(level)
-menu.main_menu()
+menu.main_menu(background_image_path="graphics/button/Background.png")
+
