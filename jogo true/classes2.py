@@ -285,9 +285,12 @@ class Menu:
 
             pygame.display.update()
 
-    def main_menu(self):
+    def main_menu(self, background_image_path):
+        background = pygame.image.load(background_image_path)
+
         while self.current_screen == "main_menu":
-            screen.fill('black')
+            screen.blit(background, (0, 0)) 
+
             menu_mouse_pos = pygame.mouse.get_pos()
 
             menu_text = get_font(30).render("Academic Adventure: From ABC to PhD", True, "#b68f40")
@@ -322,6 +325,7 @@ class Menu:
                         sys.exit()
 
             pygame.display.update()
+
 
 if __name__ == "__main__":
     # Example usage of the classes
