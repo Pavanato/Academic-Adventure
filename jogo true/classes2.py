@@ -39,7 +39,7 @@ class Player(Entity):
         self.import_character_assets()
         self.frame_index = 0
         self.animation_speed = 0.10
-        self.image = self.animations['idle'][self.frame_index]
+        self.image = self.animations['idle_direita'][self.frame_index]
         self.rect = self.image.get_rect(topleft=self.rect.topleft)
 
         self.direction = pygame.math.Vector2(0, 0)
@@ -47,7 +47,7 @@ class Player(Entity):
         self.gravity = 0.8
         self.jump_speed = -16
 
-        self.status = 'idle'
+        self.status = 'idle_direita'
         self.on_ground = False
         self.on_ceiling = False
         self.on_left = False
@@ -56,7 +56,7 @@ class Player(Entity):
     def import_character_assets(self):
         character_path = 'graphics/character/'
         
-        self.animations = {'idle':[], 'fall':[], 'menino_andando_direita':[], 'menino_andando_esquerda':[], 'run':[], 'jump':[]}
+        self.animations = {'idle_direita':[],'idle_esquerda':[], 'fall':[], 'menino_andando_direita':[], 'menino_andando_esquerda':[], 'run':[], 'jump':[]}
 
         for animation in self.animations.keys():
             full_path = character_path +  animation
@@ -79,7 +79,7 @@ class Player(Entity):
 
         if self.on_ground and (keys[pygame.K_SPACE] or keys[pygame.K_UP] or keys[pygame.K_w]):
             self.jump()
-
+            
     def handle_status(self):
         if self.direction.y < 0:
             self.status = 'jump'
@@ -91,7 +91,10 @@ class Player(Entity):
             elif self.direction.x < 0:
                 self.status = 'menino_andando_esquerda'
             else:
-                self.status = 'idle'
+                if self.status == 'menino_andando_direita':
+                    self.status = 'idle_direita'
+                elif self.status == 'menino_andando_esquerda':
+                    self.status = 'idle_esquerda'
 
     def apply_gravity(self):
         self.direction.y += self.gravity
