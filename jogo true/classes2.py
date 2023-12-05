@@ -106,11 +106,17 @@ class Player(Entity):
     def animate(self):
         animation = self.animations[self.status]
 
+        # Check if animation list is empty
+        if not animation:
+            return
+
         self.frame_index += self.animation_speed
-        if self.frame_index >= len(animation):
-            self.frame_index = 0
+
+        # Ensure frame_index is within the range of animation list
+        self.frame_index %= len(animation)
 
         self.image = animation[int(self.frame_index)]
+
 
 class Level:
     def __init__(self, level_data, surface):
