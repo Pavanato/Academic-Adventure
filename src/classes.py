@@ -106,7 +106,7 @@ class Player(Entity):
     def import_character_assets(self):
         character_path = 'src/graphics/character/'
         
-        self.animations = {'idle_direita':[],'idle_esquerda':[], 'fall':[], 'menino_andando_direita':[], 'menino_andando_esquerda':[], 'run':[], 'jump':[]}
+        self.animations = {'idle_direita':[],'idle_esquerda':[], 'fall':[], 'walking_right':[], 'menino_andando_esquerda':[], 'run':[], 'jump':[]}
 
         for animation in self.animations.keys():
             full_path = character_path +  animation
@@ -137,11 +137,11 @@ class Player(Entity):
             self.status = 'fall'
         else:
             if self.direction.x > 0:
-                self.status = 'menino_andando_direita'
+                self.status = 'walking_right'
             elif self.direction.x < 0:
-                self.status = 'menino_andando_esquerda'
+                self.status =  pygame.transform.flip('walking_right', True, False)
             else:
-                if self.status == 'menino_andando_direita':
+                if self.status == 'walking_right':
                     self.status = 'idle_direita'
                 elif self.status == 'menino_andando_esquerda':
                     self.status = 'idle_esquerda'
