@@ -67,6 +67,7 @@ class Tile(Entity):
 class Player(Entity):
     def __init__(self, pos):
         super().__init__(pos)
+        pygame.mixer.init()
 
         self.import_character_assets()
         self.frame_index = 0
@@ -84,6 +85,10 @@ class Player(Entity):
         self.on_ceiling = False
         self.on_left = False
         self.on_right = False
+
+        #audio
+        self.jump_sound = pygame.mixer.Sound('src/audio/jump_sound.wav')
+        self.jump_sound.set_volume(0.8)
 
     def import_character_assets(self):
         character_path = 'src/graphics/character/'
@@ -134,6 +139,7 @@ class Player(Entity):
 
     def jump(self):
         self.direction.y = self.jump_speed
+        self.jump_sound.play()
 
     def animate(self):
         animation = self.animations[self.status]
@@ -191,6 +197,11 @@ class Level:
         self.initialize_level(level_data)
         self.world_shift = 0
         self.current_x = 0
+
+        #audio
+        self.level_bg_music = pygame.mixer.Sound('src/audio/bg_music.wav')
+        self.level_bg_music.set_volume(0.3)
+        self.level_bg_music.play(loops = -1)
 
     def initialize_level(self, layout):
         self.tiles = pygame.sprite.Group()
