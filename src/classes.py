@@ -54,6 +54,7 @@ class Entity(pygame.sprite.Sprite):
             elif self.y_speed < 0:  # Moving up
                 self.rect.top = tile.rect.bottom
 
+
 class Tile(Entity):
     def __init__(self, pos, size):
         super().__init__(pos)
@@ -64,10 +65,22 @@ class Tile(Entity):
     def update(self, x_shift):
         self.rect.x += x_shift
 
+
+class Finish(Tile):
+    def __init__(self, pos, size):
+        super().__init__(pos, size)
+        self.image.fill('green')
+
+    
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
+
 class Player(Entity):
     def __init__(self, pos):
         super().__init__(pos)
         pygame.mixer.init()
+
 
         self.import_character_assets()
         self.frame_index = 0
@@ -155,6 +168,7 @@ class Player(Entity):
 
         self.image = animation[int(self.frame_index)]
 
+
 class NPC(Entity):
     def __init__(self, pos):
         super().__init__(pos)
@@ -171,6 +185,7 @@ class NPC(Entity):
             self.speed = 0
         elif self.speed == 0:
             self.speed = self.original_direction
+
 
 class Enemy(Entity):
     def __init__(self, pos):
@@ -191,12 +206,16 @@ class Enemy(Entity):
         # Move the enemy
         self.rect.x += self.speed * direction + x_shift
 
+
 class Level:
-    def __init__(self, level_data, surface):
+    def __init__(self, level_list, surface):
         self.display_surface = surface
-        self.initialize_level(level_data)
+        self.initialize_level(level_list[0])
+        self.levels = level_list
+        self.current_level = 0
         self.world_shift = 0
         self.current_x = 0
+        self.background_image = pygame.image.load(r"src\graphics\backgrounds\level_1\parque2.png")
 
         #audio
         self.level_bg_music = pygame.mixer.Sound('src/audio/bg_music.wav')
@@ -208,6 +227,7 @@ class Level:
         self.player = pygame.sprite.GroupSingle()
         self.enemies = pygame.sprite.Group()
         self.npcs = pygame.sprite.Group()
+        self.finish = pygame.sprite.GroupSingle()
 
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
@@ -227,6 +247,16 @@ class Level:
                 if cell == 'N':
                     npc_sprite = NPC((x, y))
                     self.npcs.add(npc_sprite)
+                if cell == 'F':
+                    finish_sprite = Finish((x, y), tile_size)
+                    self.finish.add(finish_sprite)
+
+    def next_level(self):
+        # Move to the next level
+        self.current_level += 1
+        if self.current_level >= len(self.levels):  # if we've gone past the last level, go back to the first one
+            self.current_level = -1
+        self.initialize_level(self.levels[self.current_level])
 
     def scroll_x(self):
         player = self.player.sprite
@@ -254,6 +284,7 @@ class Level:
                     player.rect.left = sprite.rect.right
                     player.on_left = True
                     self.current_x = player.rect.left
+
                 elif player.direction.x > 0:
                     player.rect.right = sprite.rect.left
                     player.on_right = True
@@ -306,9 +337,17 @@ class Level:
                 text = font.render("You collided with an NPC!", True, (255, 255, 255))
                 self.display_surface.blit(text, (200, 200))
 
+    def is_completed(self):
+        # Level is completed when the player collides with the finish line
+        return pygame.sprite.collide_rect(self.player.sprite, self.finish.sprite)
+
     def run(self):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
+
+        self.finish.update(self.world_shift)
+        self.finish.draw(self.display_surface)
+        
         self.scroll_x()
 
         self.player.update()
@@ -325,6 +364,10 @@ class Level:
         self.npcs.draw(self.display_surface)
         self.check_npc_collision()
         pygame.display.flip()
+
+        if self.is_completed():
+            self.next_level()
+
 
 class Button:
     def __init__(self, image, pos, text_input, font, base_color, hovering_color):
@@ -354,6 +397,7 @@ class Button:
         else:
             self.text = self.font.render(self.text_input, True, self.base_color)
 
+
 class Menu:
     def __init__(self, level_instance):
         self.current_screen = "main_menu"
@@ -366,7 +410,7 @@ class Menu:
                     pygame.quit()
                     sys.exit()
 
-            screen.fill('black')
+            screen.blit(pygame.image.load(r"src\graphics\backgrounds\level_1\parque2.png"), (0, 0))
             self.level.run()
 
             pygame.display.update()
@@ -438,6 +482,25 @@ class Menu:
                         sys.exit()
 
             pygame.display.update()
+
+    def game_over(self):
+        self.level.display_surface.fill((0, 0, 0))  # fill the screen with black
+
+        font = pygame.font.Font(None, 72)  # create a font object
+        text = font.render("Game Over", True, (255, 255, 255))  # create a text surface
+        rect = text.get_rect(center=(640, 360))  # get the rectangle of the text surface
+        self.level.display_surface.blit(text, rect)  # blit the text surface to the screen
+
+        pygame.display.flip()  # update the display
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    self.current_screen = "main_menu"  # return to the main menu
+                    return
 
 # Main
 if __name__ == "__main__":
