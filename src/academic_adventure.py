@@ -1,6 +1,7 @@
 import pygame
 from settings import *
 from classes import *
+from menu import *
 
 FPS = 60
 
