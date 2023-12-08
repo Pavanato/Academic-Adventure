@@ -1,13 +1,13 @@
 import pygame
 from settings import *
-
+import sys
     
 # TODO: Create screen, clock for the main menu. Check if these can be removed
 screen = pygame.display.set_mode((screen_width, screen_height))
 # TODO: Create the function Game() that has the clock as an entrie
 clock = pygame.time.Clock()
 
-# Auxiliary functions
+# Auxiliary function
 def get_font(size):
     return pygame.font.Font(r"src\graphics\button\font.ttf", size)
 
@@ -51,6 +51,10 @@ class Menu:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:  # 'ESC' key to pause the game
+                        self.current_screen = "pause"
+                        self.pause()
 
             screen.blit(pygame.image.load(r"src\graphics\backgrounds\level_1\parque2.png"), (0, 0))
             self.level.run()
@@ -58,28 +62,60 @@ class Menu:
             pygame.display.update()
             clock.tick(60)
 
-    def options(self):
-        while self.current_screen == "credits":
-            options_mouse_pos = pygame.mouse.get_pos()
+    def pause(self):
+        while self.current_screen == "pause":
+            pause_mouse_pos = pygame.mouse.get_pos()
 
             screen.fill("white")
 
-            options_text = get_font(45).render("Credits: game made by good people", True, "Black")
-            options_rect = options_text.get_rect(center=(640, 260))
-            screen.blit(options_text, options_rect)
+            pause_text = get_font(45).render("PAUSE", True, "Black")
+            pause_rect = pause_text.get_rect(center=(640, 260))
+            screen.blit(pause_text, pause_rect)
 
-            options_back = Button(image=None, pos=(640, 460),
-                                  text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+            resume_button = Button(image=None, pos=(640, 400),
+                                text_input="RESUME", font=get_font(75), base_color="Black", hovering_color="Green")
+            quit_button = Button(image=None, pos=(640, 500),
+                                text_input="QUIT", font=get_font(75), base_color="Black", hovering_color="Green")
 
-            options_back.change_color(options_mouse_pos)
-            options_back.update(screen)
+            for button in [resume_button, quit_button]:
+                button.change_color(pause_mouse_pos)
+                button.update(screen)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if options_back.check_for_input(options_mouse_pos):
+                    if resume_button.check_for_input(pause_mouse_pos):
+                        self.current_screen = "play"
+                    if quit_button.check_for_input(pause_mouse_pos):
+                        pygame.quit()
+                        sys.exit()
+
+            pygame.display.update()
+
+    def credits(self):
+        while self.current_screen == "credits":
+            credits_mouse_pos = pygame.mouse.get_pos()
+
+            screen.fill("white")
+
+            credits_text = get_font(45).render("This is the credits screen.", True, "Black")
+            credits_rect = credits_text.get_rect(center=(640, 260))
+            screen.blit(credits_text, credits_rect)
+
+            credits_back = Button(image=None, pos=(640, 460),
+                                  text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+
+            credits_back.change_color(credits_mouse_pos)
+            credits_back.update(screen)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if credits_back.check_for_input(credits_mouse_pos):
                         self.current_screen = "main_menu"
 
             pygame.display.update()
@@ -97,14 +133,14 @@ class Menu:
 
             play_button = Button(image=pygame.image.load("src/graphics/button/Play Rect.png"), pos=(640, 250),
                                  text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-            options_button = Button(image=pygame.image.load("src/graphics/button/Options Rect.png"), pos=(640, 400),
+            credits_button = Button(image=pygame.image.load("src/graphics/button/Credits Rect.png"), pos=(640, 400),
                                     text_input="CREDITS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
             quit_button = Button(image=pygame.image.load("src/graphics/button/Quit Rect.png"), pos=(640, 550),
                                  text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
 
             screen.blit(menu_text, menu_rect)
 
-            for button in [play_button, options_button, quit_button]:
+            for button in [play_button, credits_button, quit_button]:
                 button.change_color(menu_mouse_pos)
                 button.update(screen)
 
@@ -116,9 +152,9 @@ class Menu:
                     if play_button.check_for_input(menu_mouse_pos):
                         self.current_screen = "play"
                         self.play()
-                    if options_button.check_for_input(menu_mouse_pos):
+                    if credits_button.check_for_input(menu_mouse_pos):
                         self.current_screen = "credits"
-                        self.options()
+                        self.credits()
                     if quit_button.check_for_input(menu_mouse_pos):
                         pygame.quit()
                         sys.exit()
