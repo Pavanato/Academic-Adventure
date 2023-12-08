@@ -1,16 +1,20 @@
 import pygame
 from os import walk
 from settings import *
+from menu import *
 import math
 import time
 import sys
 
-# TODO: Maybe these two lines will be erased
+VOLUME = 1.0
+
+
 # TODO: Create screen, clock for the main menu. Check if these can be removed
 screen = pygame.display.set_mode((screen_width, screen_height))
 # TODO: Create the function Game() that has the clock as an entrie
 clock = pygame.time.Clock()
 
+# Auxiliary function
 def import_folder(path):
     surface_list = []
 
@@ -30,25 +34,9 @@ class Entity(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
         self.rect = pygame.Rect(pos[0], pos[1], 0, 0)
-        self.x_speed = 2
-        self.y_speed = 2
 
     def update(self):
-        # Move the entity along the x-axis and check for collisions
-        self.rect.x += self.x_speed
-        for tile in pygame.sprite.spritecollide(self, tiles_group, False):
-            if self.x_speed > 0:  # Moving right
-                self.rect.right = tile.rect.left
-            elif self.x_speed < 0:  # Moving left
-                self.rect.left = tile.rect.right
-
-        # Move the entity along the y-axis and check for collisions
-        self.rect.y += self.y_speed
-        for tile in pygame.sprite.spritecollide(self, tiles_group, False):
-            if self.y_speed > 0:  # Moving down
-                self.rect.bottom = tile.rect.top
-            elif self.y_speed < 0:  # Moving up
-                self.rect.top = tile.rect.bottom
+        pass
 
 
 class Tile(Entity):
@@ -97,7 +85,7 @@ class Player(Entity):
 
         #audio
         self.jump_sound = pygame.mixer.Sound('src/audio/jump_sound.wav')
-        self.jump_sound.set_volume(0.8)
+        self.jump_sound.set_volume(0.8 * VOLUME)
 
     def import_character_assets(self):
         character_path = 'src/graphics/character/'
@@ -166,22 +154,67 @@ class Player(Entity):
 
 
 class NPC(Entity):
-    def __init__(self, pos):
+    def __init__(self, pos, list_of_questions, question_index):
         super().__init__(pos)
-        self.image = pygame.Surface((50, 50))  # Set the size of the enemy
+        self.image = pygame.Surface((50, 50))
         self.image.fill('blue')
         self.rect = self.image.get_rect(topleft=self.rect.topleft)
         self.speed = 2
         self.original_direction = self.speed
+        self.list_of_questions = list_of_questions
+        self.question_index = question_index
+        self.was_answered = False
 
     def update(self, x_shift):
-        # Simple movement pattern: move right until hitting a wall, then stop
-        self.rect.x += self.speed + x_shift
-        if self.rect.right > screen_width or self.rect.left < 0:
-            self.speed = 0
-        elif self.speed == 0:
-            self.speed = self.original_direction
+        self.rect.x += x_shift
 
+
+    def question(self, list_of_questions, question_index):
+        # Extract the question text and the answers
+        question = list_of_questions[question_index]
+
+        question_text, answers = question['text'], question['answers']
+        correct_answer_index = answers[-1]  # Get the index of the correct answer
+
+        # Create buttons for the answers (excluding the last element which is the correct answer index)
+        answer_buttons = [Button(image=None, pos=(640, 360 + i * 100), text_input=answer, font=get_font(50), base_color="Black", hovering_color="Green") for i, answer in enumerate(answers[:-1])]
+
+        while True:
+            mouse_pos = pygame.mouse.get_pos()
+
+            screen.fill("white")
+
+            # Display the question
+            question_surface = get_font(35).render(question_text, True, "Black")
+            question_rect = question_surface.get_rect(center=(640, 260))
+            screen.blit(question_surface, question_rect)
+
+            # Update and draw the answer buttons
+            for button in answer_buttons:
+                button.change_color(mouse_pos)
+                button.update(screen)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    for i, button in enumerate(answer_buttons):
+                        if button.check_for_input(mouse_pos):
+                            self.was_answered = True
+                            
+                            # Check if the selected answer is correct
+                            if i == correct_answer_index:
+
+                                print("Correct answer!")
+                                return
+                            else:
+                                print("Estude mais.")
+                                return
+                            
+                            
+            pygame.display.update()        
+        
 
 class Enemy(Entity):
     def __init__(self, pos):
@@ -215,7 +248,7 @@ class Level:
 
         #audio
         self.level_bg_music = pygame.mixer.Sound('src/audio/bg_music.wav')
-        self.level_bg_music.set_volume(0.3)
+        self.level_bg_music.set_volume(0.3 * VOLUME)
         self.level_bg_music.play(loops = -1)
 
     def initialize_level(self, layout):
@@ -241,7 +274,7 @@ class Level:
                     enemy_sprite = Enemy((x, y))
                     self.enemies.add(enemy_sprite)
                 if cell == 'N':
-                    npc_sprite = NPC((x, y))
+                    npc_sprite = NPC((x, y), list_of_questions, 0)
                     self.npcs.add(npc_sprite)
                 if cell == 'F':
                     finish_sprite = Finish((x, y), tile_size)
@@ -312,26 +345,25 @@ class Level:
         if player.on_ceiling and player.direction.y > 0:
             player.on_ceiling = False
 
-    def npc_horizontal_movement_collision(self, npc):
-        npc.rect.x += npc.speed
+    # def npc_horizontal_movement_collision(self, npc):
+    #     npc.rect.x += npc.speed
 
-        for sprite in self.tiles.sprites():
-            if sprite.rect.colliderect(npc.rect):
-                if npc.speed < 0:
-                    npc.rect.left = sprite.rect.right
-                    npc.speed = -npc.speed  # Reverse direction
-                elif npc.speed > 0:
-                    npc.rect.right = sprite.rect.left
-                    npc.speed = -npc.speed  # Reverse direction
+    #     for sprite in self.tiles.sprites():
+    #         if sprite.rect.colliderect(npc.rect):
+    #             if npc.speed < 0:
+    #                 npc.rect.left = sprite.rect.right
+    #                 npc.speed = -npc.speed  # Reverse direction
+    #             elif npc.speed > 0:
+    #                 npc.rect.right = sprite.rect.left
+    #                 npc.speed = -npc.speed  # Reverse direction
     
     def check_npc_collision(self):
         # Check for collisions between the player and each NPC
-        for npc in self.npcs.sprites():
-            if pygame.sprite.collide_rect(self.player.sprite, npc):
+        for index, npc in enumerate(self.npcs.sprites()):
+            if not npc.was_answered and pygame.sprite.collide_rect(self.player.sprite, npc):
                 # If a collision is detected, display a text box
-                font = pygame.font.Font(None, 36)
-                text = font.render("You collided with an NPC!", True, (255, 255, 255))
-                self.display_surface.blit(text, (200, 200))
+                npc.question(list_of_questions, index)
+
 
     def is_completed(self):
         # Level is completed when the player collides with the finish line
@@ -355,15 +387,14 @@ class Level:
         self.enemies.draw(self.display_surface)
 
         self.npcs.update(self.world_shift)
-        for npc in self.npcs.sprites():
-            self.npc_horizontal_movement_collision(npc)
+        # for npc in self.npcs.sprites():
+        #     self.npc_horizontal_movement_collision(npc)
         self.npcs.draw(self.display_surface)
         self.check_npc_collision()
         pygame.display.flip()
 
         if self.is_completed():
             self.next_level()
-
 
 
 # Main
