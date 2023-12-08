@@ -59,12 +59,12 @@ class Menu:
             clock.tick(60)
 
     def options(self):
-        while self.current_screen == "options":
+        while self.current_screen == "credits":
             options_mouse_pos = pygame.mouse.get_pos()
 
             screen.fill("white")
 
-            options_text = get_font(45).render("This is the OPTIONS screen.", True, "Black")
+            options_text = get_font(45).render("Credits: game made by good people", True, "Black")
             options_rect = options_text.get_rect(center=(640, 260))
             screen.blit(options_text, options_rect)
 
@@ -98,7 +98,7 @@ class Menu:
             play_button = Button(image=pygame.image.load("src/graphics/button/Play Rect.png"), pos=(640, 250),
                                  text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
             options_button = Button(image=pygame.image.load("src/graphics/button/Options Rect.png"), pos=(640, 400),
-                                    text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+                                    text_input="CREDITS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
             quit_button = Button(image=pygame.image.load("src/graphics/button/Quit Rect.png"), pos=(640, 550),
                                  text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
 
@@ -117,7 +117,7 @@ class Menu:
                         self.current_screen = "play"
                         self.play()
                     if options_button.check_for_input(menu_mouse_pos):
-                        self.current_screen = "options"
+                        self.current_screen = "credits"
                         self.options()
                     if quit_button.check_for_input(menu_mouse_pos):
                         pygame.quit()
