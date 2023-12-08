@@ -16,7 +16,12 @@ class Game:
         # Initialize a new game
         self.level = Level(level_list, self.screen)
         self.menu = Menu(self.level)    
-
+        '''
+        self.ui = UI(screen)
+        
+    def change_coins(self,amount):
+	    self.collectible += amount
+        '''
     def run(self):
         self.new()
 

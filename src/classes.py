@@ -235,6 +235,18 @@ class Enemy(Entity):
         # Move the enemy
         self.rect.x += self.speed * direction + x_shift
 
+class Collectible(Entity):
+    def __init__(self, pos, value):
+        super().__init__(pos)
+        image = pygame.image.load("src/graphics/collectibles/book.png").convert_alpha()
+        rect_imagem = image.get_rect()
+        self.image = pygame.Surface((rect_imagem.width, rect_imagem.height), pygame.SRCALPHA)
+        self.image.blit(image, (0, 0))
+        self.rect = self.image.get_rect(topleft=pos)
+        self.value = value
+
+    def update(self, x_shift):
+        self.rect.x += x_shift
 
 class Level:
     def __init__(self, level_list, surface):
@@ -251,12 +263,16 @@ class Level:
         self.level_bg_music.set_volume(0.3 * VOLUME)
         self.level_bg_music.play(loops = -1)
 
+        #collectibles
+        self.collectibles_collected = 0 
+
     def initialize_level(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         self.enemies = pygame.sprite.Group()
         self.npcs = pygame.sprite.Group()
         self.finish = pygame.sprite.GroupSingle()
+        self.collectible = pygame.sprite.Group()
 
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
@@ -279,6 +295,9 @@ class Level:
                 if cell == 'F':
                     finish_sprite = Finish((x, y), tile_size)
                     self.finish.add(finish_sprite)
+                if cell == 'C':
+                    collectible_sprite = Collectible((x,y), value = 1)
+                    self.collectible.add(collectible_sprite)
 
     def next_level(self):
         # Move to the next level
@@ -365,6 +384,17 @@ class Level:
                 npc.question(list_of_questions, index)
 
 
+    def check_collectible_collisions(self):
+        collided_collectible = pygame.sprite.spritecollide(self.player.sprite, self.collectible, True)
+       		
+        for collectible in collided_collectible:		
+            self.change_collectible(collectible.value)
+    def change_collectible(self, value):
+        font = pygame.font.Font(None, 36)
+        text = font.render("You collided with a Book", True, (225, 255, 255))
+        self.display_surface.blit(text, (500, 200))
+
+
     def is_completed(self):
         # Level is completed when the player collides with the finish line
         return pygame.sprite.collide_rect(self.player.sprite, self.finish.sprite)
@@ -391,11 +421,37 @@ class Level:
         #     self.npc_horizontal_movement_collision(npc)
         self.npcs.draw(self.display_surface)
         self.check_npc_collision()
+
+        self.collectible.update(self.world_shift)
+        self.collectible.draw(self.display_surface)
+        self.check_collectible_collisions()
+
         pygame.display.flip()
 
         if self.is_completed():
             self.next_level()
 
+'''
+class UI:
+	def __init__(self,surface):
+
+		# setup 
+		self.display_surface = surface 
+
+
+		# coins 
+		self.collectible = pygame.image.load('src/graphics/collectibles/book_bar.png').convert_alpha()
+		self.collectible_rect = self.collectible.get_rect(topleft = (50,61))
+		self.font = pygame.font.Font(None, 72)  
+
+
+	def show_coins(self,amount):
+		self.display_surface.blit(self.collectible,self.coin_rect)
+		collectible_amount_surf = self.font.render(str(amount),False,'#33323d')
+		collectible_amount_rect = collectible_amount_surf.get_rect(midleft = (self.collectible_rect.right + 4,self.collectible_rect.centery))
+		self.display_surface.blit(collectible_amount_surf,collectible_amount_rect)
+
+'''
 
 # Main
 if __name__ == "__main__":
