@@ -29,8 +29,8 @@ class Game:
                 self.menu.main_menu(r"src\graphics\backgrounds\level_1\parque2.png")
             elif self.menu.current_screen == "play":
                 self.menu.play()
-            elif self.menu.current_screen == "options":
-                self.menu.options()
+            elif self.menu.current_screen == "credits":
+                self.menu.credits()
             elif self.level.current_level == -1:
                 self.menu.game_over()
 
