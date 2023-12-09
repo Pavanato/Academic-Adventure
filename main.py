@@ -8,4 +8,7 @@ sys.path.insert(0, src_dir)
 # Now you can import your module
 from academic_adventure import Game
 
-Game().run()
+# Crie uma instância da classe Game
+game_instance = Game()
+
+game_instance.run()
