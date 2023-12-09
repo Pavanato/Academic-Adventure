@@ -123,7 +123,7 @@ class Player(Entity):
             if self.direction.x > 0:
                 self.status = 'walking_right'
             elif self.direction.x < 0:
-                self.status =  pygame.transform.flip('walking_right', True, False)
+                self.status = 'menino_andando_esquerda'
             else:
                 if self.status == 'walking_right':
                     self.status = 'idle_direita'
@@ -247,9 +247,37 @@ class Collectible(Entity):
 
     def update(self, x_shift):
         self.rect.x += x_shift
+class UI:
+    def __init__(self, surface, book_bar_image_path):
+        # setup 
+        self.display_surface = surface 
+
+        # health 
+        self.book_bar = pygame.image.load(book_bar_image_path).convert_alpha()
+        self.book_bar_topleft = (35, 45)
+        self.bar_max_width = 4
+        self.bar_height = 4
+
+        # books
+        self.book = pygame.image.load('src/graphics/collectibles/book.png').convert_alpha()
+        self.book_rect = self.book.get_rect(topleft=(50, 61))
+        self.font = pygame.font.Font(None, 36)
+
+    def show_health(self, current, full):
+        self.display_surface.blit(self.book_bar, (20, 10))
+        current_book_ratio = current / full
+        current_bar_width = self.bar_max_width * current_book_ratio
+        health_bar_rect = pygame.Rect(self.book_bar_topleft, (current_bar_width, self.bar_height))
+        pygame.draw.rect(self.display_surface, '#dc4949', health_bar_rect)
+
+    def show_books(self, amount):
+        self.display_surface.blit(self.book, self.book_rect)
+        book_amount_surf = self.font.render(str(amount), False, '#33323d')
+        book_amount_rect = book_amount_surf.get_rect(midleft=(self.book_rect.right + 4, self.book_rect.centery))
+        self.display_surface.blit(book_amount_surf, book_amount_rect)
 
 class Level:
-    def __init__(self, level_list, surface):
+    def __init__(self, level_list, surface, change_books, change_health):
         self.display_surface = surface
         self.initialize_level(level_list[0])
         self.levels = level_list
@@ -265,7 +293,11 @@ class Level:
 
         #collectibles
         self.collectibles_collected = 0 
+        self.change_books = change_books
+        self.book_bar = pygame.image.load('src/graphics/collectibles/book_bar.png').convert_alpha()
+        self.ui = UI(self.display_surface, 'src/graphics/collectibles/book_bar.png')  # Adicionando uma instância da classe UI
 
+        
     def initialize_level(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
@@ -274,6 +306,7 @@ class Level:
         self.finish = pygame.sprite.GroupSingle()
         self.collectible = pygame.sprite.Group()
 
+        
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 tile_size = 64
@@ -298,6 +331,8 @@ class Level:
                 if cell == 'C':
                     collectible_sprite = Collectible((x,y), value = 1)
                     self.collectible.add(collectible_sprite)
+
+                
 
     def next_level(self):
         # Move to the next level
@@ -390,10 +425,8 @@ class Level:
         for collectible in collided_collectible:		
             self.change_collectible(collectible.value)
     def change_collectible(self, value):
-        font = pygame.font.Font(None, 36)
-        text = font.render("You collided with a Book", True, (225, 255, 255))
-        self.display_surface.blit(text, (500, 200))
-
+        self.collectibles_collected += value
+        self.change_books(self.collectibles_collected)
 
     def is_completed(self):
         # Level is completed when the player collides with the finish line
@@ -425,33 +458,15 @@ class Level:
         self.collectible.update(self.world_shift)
         self.collectible.draw(self.display_surface)
         self.check_collectible_collisions()
-
+        
+        self.ui.show_health(self.collectibles_collected, 10)  # Exemplo: 10 é o valor máximo de livros a serem coletados
+        self.ui.show_books(self.collectibles_collected)
+        
         pygame.display.flip()
-
+        
         if self.is_completed():
             self.next_level()
-
-'''
-class UI:
-	def __init__(self,surface):
-
-		# setup 
-		self.display_surface = surface 
-
-
-		# coins 
-		self.collectible = pygame.image.load('src/graphics/collectibles/book_bar.png').convert_alpha()
-		self.collectible_rect = self.collectible.get_rect(topleft = (50,61))
-		self.font = pygame.font.Font(None, 72)  
-
-
-	def show_coins(self,amount):
-		self.display_surface.blit(self.collectible,self.coin_rect)
-		collectible_amount_surf = self.font.render(str(amount),False,'#33323d')
-		collectible_amount_rect = collectible_amount_surf.get_rect(midleft = (self.collectible_rect.right + 4,self.collectible_rect.centery))
-		self.display_surface.blit(collectible_amount_surf,collectible_amount_rect)
-
-'''
+ 
 
 # Main
 if __name__ == "__main__":
