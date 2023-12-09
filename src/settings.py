@@ -1,28 +1,77 @@
+# level_map1 = [
+# '                              ',
+# '                              ',
+# '        x                     ',
+# ' XX   XXX              XX     ',
+# ' XX E        P CC C CCCCC F   ',
+# ' XXXX  N CCCCCCXX     N   XX  ',
+# ' XXXX  E    XX                ',
+# ' XX    X  XXXX  N XXXNXXX  C  ',
+# '       X  XEXX    XXXXXXX     ',
+# '    XXXX  X N  X  XX   XXXX   ',
+# 'XXXXXXXX  XXXXXX  XX   XXXX   ']
+
+
+from csv import reader
+
+def import_csv_layout(path):
+    terrain_map = []
+    with open(path) as map:
+        csv_reader = reader(map)
+        for row in csv_reader:
+            row = [' ' if cell == '-1' else 'X' if cell == '0' else cell for cell in row]
+            terrain_map.append(''.join(row))
+    return terrain_map
+    
+
+
+level_map2 = import_csv_layout(r"src\graphics\backgrounds\level_1\map_2.csv")
+
 level_map1 = [
-'                              ',
-'                              ',
-'        x                     ',
-' XX   XXX              XX     ',
-' XX E        P CC C CCCCC F   ',
-' XXXX  N CCCCCCXX     N   XX  ',
-' XXXX  E    XX                ',
-' XX    X  XXXX  N XXXNXXX  C  ',
-'       X  XEXX    XXXXXXX     ',
-'    XXXX  X N  X  XX   XXXX   ',
-'XXXXXXXX  XXXXXX  XX   XXXX   ']
-
-
-level_map2 = [
         "XXXXXXXXXXXXXXXXXXXX",
         "X                  X",
         "X                  X",
-        "X      F   X       X",
-        "X      X     X     X",
         "X                  X",
-        "X     N    X    x  X",
-        "X     XX           X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X                  X",
+        "X       C          X",
+        "X                  X",
+        "X              C   X",
+        "X  C               X",
+        "X          N       X",        
+        "X      N   X       X",
+        "X      X     X     X",
+        "X         C     N  X",
+        "X     F    X    x  X",
+        "X   N XX           X",
         "X  X           X   X",
-        "X           P      X",
+        "X         P        X",
         "XXXXXXXXXXXXXXXXXXXX",
     ]
 
@@ -39,8 +88,12 @@ list_of_questions = [
     {'text': 'Who is the author of "1984"?', 'answers': ['George Orwell', 'Aldous Huxley', 'Ray Bradbury', 0]}
 ]
 
+
 level_list = [level_map1, level_map2]
 
-tile_size = 64
-screen_width = 1280
-screen_height = len(level_map1) * tile_size
+# Constants
+FPS = 60
+VERTICAL_TILE_NUMBER = 45
+TILE_SIZE = 16
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = len(level_map1) * TILE_SIZE

@@ -6,14 +6,6 @@ import math
 import time
 import sys
 
-VOLUME = 1.0
-
-
-# TODO: Create screen, clock for the main menu. Check if these can be removed
-screen = pygame.display.set_mode((screen_width, screen_height))
-# TODO: Create the function Game() that has the clock as an entrie
-clock = pygame.time.Clock()
-
 # Auxiliary function
 def import_folder(path):
     surface_list = []
@@ -85,7 +77,7 @@ class Player(Entity):
 
         #audio
         self.jump_sound = pygame.mixer.Sound('src/audio/jump_sound.wav')
-        self.jump_sound.set_volume(0.8 * VOLUME)
+        self.jump_sound.set_volume(0.8)
 
     def import_character_assets(self):
         character_path = 'src/graphics/character/'
@@ -156,11 +148,9 @@ class Player(Entity):
 class NPC(Entity):
     def __init__(self, pos, list_of_questions, question_index):
         super().__init__(pos)
-        self.image = pygame.Surface((50, 50))
+        self.image = pygame.Surface((16, 16))
         self.image.fill('blue')
         self.rect = self.image.get_rect(topleft=self.rect.topleft)
-        self.speed = 2
-        self.original_direction = self.speed
         self.list_of_questions = list_of_questions
         self.question_index = question_index
         self.was_answered = False
@@ -235,18 +225,28 @@ class Enemy(Entity):
         # Move the enemy
         self.rect.x += self.speed * direction + x_shift
 
+
 class Collectible(Entity):
     def __init__(self, pos, value):
         super().__init__(pos)
         image = pygame.image.load("src/graphics/collectibles/book.png").convert_alpha()
-        rect_imagem = image.get_rect()
-        self.image = pygame.Surface((rect_imagem.width, rect_imagem.height), pygame.SRCALPHA)
+        rect_image = image.get_rect()
+        self.image = pygame.Surface((rect_image.width, rect_image.height), pygame.SRCALPHA)
         self.image.blit(image, (0, 0))
         self.rect = self.image.get_rect(topleft=pos)
         self.value = value
 
+    def change_books(self, amount):
+        self.book += amount
+        self.ui_instance.show_books(self.book)
+    
+    def change_health(self, amount):
+        self.cur_health += amount
+
     def update(self, x_shift):
         self.rect.x += x_shift
+
+
 class UI:
     def __init__(self, surface, book_bar_image_path):
         # setup 
@@ -276,8 +276,9 @@ class UI:
         book_amount_rect = book_amount_surf.get_rect(midleft=(self.book_rect.right + 4, self.book_rect.centery))
         self.display_surface.blit(book_amount_surf, book_amount_rect)
 
+
 class Level:
-    def __init__(self, level_list, surface, change_books, change_health):
+    def __init__(self, level_list, surface):
         self.display_surface = surface
         self.initialize_level(level_list[0])
         self.levels = level_list
@@ -285,17 +286,13 @@ class Level:
         self.world_shift = 0
         self.current_x = 0
         self.background_image = pygame.image.load(r"src\graphics\backgrounds\level_1\parque2.png")
-
-        #audio
-        self.level_bg_music = pygame.mixer.Sound('src/audio/bg_music.wav')
-        self.level_bg_music.set_volume(0.3 * VOLUME)
-        self.level_bg_music.play(loops = -1)
+        self.game_over = False
 
         #collectibles
         self.collectibles_collected = 0 
-        self.change_books = change_books
+        # self.change_books = change_books
         self.book_bar = pygame.image.load('src/graphics/collectibles/book_bar.png').convert_alpha()
-        self.ui = UI(self.display_surface, 'src/graphics/collectibles/book_bar.png')  # Adicionando uma instância da classe UI
+        self.ui = UI(self.display_surface, 'src/graphics/collectibles/book_bar.png')  # Add the UI to the level
 
         
     def initialize_level(self, layout):
@@ -309,12 +306,11 @@ class Level:
         
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
-                tile_size = 64
-                x = col_index * tile_size
-                y = row_index * tile_size
+                x = col_index * TILE_SIZE
+                y = row_index * TILE_SIZE
 
                 if cell == 'X':
-                    tile = Tile((x, y), tile_size)
+                    tile = Tile((x, y), TILE_SIZE)
                     self.tiles.add(tile)
                 if cell == 'P':
                     player_sprite = Player((x, y))
@@ -326,19 +322,19 @@ class Level:
                     npc_sprite = NPC((x, y), list_of_questions, 0)
                     self.npcs.add(npc_sprite)
                 if cell == 'F':
-                    finish_sprite = Finish((x, y), tile_size)
+                    finish_sprite = Finish((x, y), TILE_SIZE)
                     self.finish.add(finish_sprite)
                 if cell == 'C':
                     collectible_sprite = Collectible((x,y), value = 1)
                     self.collectible.add(collectible_sprite)
 
-                
-
     def next_level(self):
         # Move to the next level
         self.current_level += 1
-        if self.current_level >= len(self.levels):  # if we've gone past the last level, go back to the first one
+        if self.current_level >= len(self.levels):
             self.current_level = -1
+            self.game_over = True
+            return
         self.initialize_level(self.levels[self.current_level])
 
     def scroll_x(self):
@@ -346,11 +342,10 @@ class Level:
         player_x = player.rect.centerx
         direction_x = player.direction.x
 
-        screen_width = 1280
-        if player_x < screen_width / 4 and direction_x < 0:
+        if player_x < SCREEN_WIDTH / 4 and direction_x < 0:
             self.world_shift = 8
             player.speed = 0
-        elif player_x > screen_width - (screen_width / 4) and direction_x > 0:
+        elif player_x > SCREEN_WIDTH - (SCREEN_WIDTH / 4) and direction_x > 0:
             self.world_shift = -8
             player.speed = 0
         else:
@@ -378,7 +373,6 @@ class Level:
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
             player.on_right = False
 
-
     def vertical_movement_collision(self):
         player = self.player.sprite
         player.apply_gravity()
@@ -398,18 +392,6 @@ class Level:
             player.on_ground = False
         if player.on_ceiling and player.direction.y > 0:
             player.on_ceiling = False
-
-    # def npc_horizontal_movement_collision(self, npc):
-    #     npc.rect.x += npc.speed
-
-    #     for sprite in self.tiles.sprites():
-    #         if sprite.rect.colliderect(npc.rect):
-    #             if npc.speed < 0:
-    #                 npc.rect.left = sprite.rect.right
-    #                 npc.speed = -npc.speed  # Reverse direction
-    #             elif npc.speed > 0:
-    #                 npc.rect.right = sprite.rect.left
-    #                 npc.speed = -npc.speed  # Reverse direction
     
     def check_npc_collision(self):
         # Check for collisions between the player and each NPC
@@ -418,15 +400,14 @@ class Level:
                 # If a collision is detected, display a text box
                 npc.question(list_of_questions, index)
 
-
     def check_collectible_collisions(self):
         collided_collectible = pygame.sprite.spritecollide(self.player.sprite, self.collectible, True)
        		
-        for collectible in collided_collectible:		
+        for collectible in collided_collectible:
             self.change_collectible(collectible.value)
+
     def change_collectible(self, value):
         self.collectibles_collected += value
-        self.change_books(self.collectibles_collected)
 
     def is_completed(self):
         # Level is completed when the player collides with the finish line
@@ -446,8 +427,8 @@ class Level:
         self.vertical_movement_collision()
         self.player.draw(self.display_surface)
 
-        self.enemies.update(self.world_shift)
-        self.enemies.draw(self.display_surface)
+        # self.enemies.update(self.world_shift)
+        # self.enemies.draw(self.display_surface)
 
         self.npcs.update(self.world_shift)
         # for npc in self.npcs.sprites():
@@ -466,7 +447,6 @@ class Level:
         
         if self.is_completed():
             self.next_level()
- 
 
 # Main
 if __name__ == "__main__":
@@ -495,7 +475,7 @@ if __name__ == "__main__":
         "XXXXXXXXXXXXXXXXXXXX",
     ]
 
-    screen = pygame.display.set_mode((screen_width, screen_height))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     game_level = Level(level_data, screen)
 
@@ -506,15 +486,3 @@ if __name__ == "__main__":
     menu = Menu(game_level)
 
     menu.main_menu(background_image_path=r"graphics\button\Background.png")
-
-
-
-    #Q: any recomendation in this code?
-#R: Yes, you can use a dictionary to store the buttons and their functions, like this:
-#   buttons = {"Play": play, "Options": options, "Quit": quit}
-#   Then you can iterate over the buttons and check if the mouse is over the button
-#   for button in buttons:
-#       if button.check_for_input(mouse_pos):
-#           buttons[button]() # Call the function associated with the button
-#   This way you can add new buttons without having to change the code that checks for input
-#   and you can also add new functions without having to change the code that checks for input
