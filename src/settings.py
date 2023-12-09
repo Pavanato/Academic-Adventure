@@ -1,19 +1,6 @@
-# level_map1 = [
-# '                              ',
-# '                              ',
-# '        x                     ',
-# ' XX   XXX              XX     ',
-# ' XX E        P CC C CCCCC F   ',
-# ' XXXX  N CCCCCCXX     N   XX  ',
-# ' XXXX  E    XX                ',
-# ' XX    X  XXXX  N XXXNXXX  C  ',
-# '       X  XEXX    XXXXXXX     ',
-# '    XXXX  X N  X  XX   XXXX   ',
-# 'XXXXXXXX  XXXXXX  XX   XXXX   ']
-
-
 from csv import reader
 
+# Local function
 def import_csv_layout(path):
     terrain_map = []
     with open(path) as map:
@@ -24,10 +11,9 @@ def import_csv_layout(path):
     return terrain_map
     
 
+level_map1 = import_csv_layout(r"src\graphics\backgrounds\level_1\school_map.csv")
 
-level_map2 = import_csv_layout(r"src\graphics\backgrounds\level_1\map_2.csv")
-
-level_map1 = [
+level_map2 = [
         "XXXXXXXXXXXXXXXXXXXX",
         "X                  X",
         "X                  X",
@@ -76,16 +62,16 @@ level_map1 = [
     ]
 
 list_of_questions = [
-    {'text': 'What is the capital of France?', 'answers': ['Paris', 'London', 'Berlin', 0]},
-    {'text': 'What is the square root of 16?', 'answers': ['4', '8', '2', 0]},
-    {'text': 'Who wrote "To Kill a Mockingbird"?', 'answers': ['Harper Lee', 'George Orwell', 'J.K. Rowling', 0]},
-    {'text': 'What is the chemical symbol for Hydrogen?', 'answers': ['H', 'He', 'Hy', 0]},
-    {'text': 'Who painted the Mona Lisa?', 'answers': ['Leonardo da Vinci', 'Vincent van Gogh', 'Pablo Picasso', 0]},
-    {'text': 'What is the largest planet in our solar system?', 'answers': ['Jupiter', 'Earth', 'Mars', 0]},
-    {'text': 'What is the capital of Australia?', 'answers': ['Canberra', 'Sydney', 'Melbourne', 0]},
-    {'text': 'Who discovered penicillin?', 'answers': ['Alexander Fleming', 'Marie Curie', 'Louis Pasteur', 0]},
-    {'text': 'What is the tallest mountain in the world?', 'answers': ['Mount Everest', 'K2', 'Kilimanjaro', 0]},
-    {'text': 'Who is the author of "1984"?', 'answers': ['George Orwell', 'Aldous Huxley', 'Ray Bradbury', 0]}
+    {'text': 'Calculate 2 + 5?', 'answers': ['8', '7', '10', 1]},
+    {'text': 'What is the square root of 169?', 'answers': ['13', '17', '19', 0]},
+    {'text': 'Calculate the sum of the first 5 even numbers?', 'answers': ['10', '20', '22', 1]},
+    {'text': 'Is zero a integer number?', 'answers': ['Yes', 'No', 'Zero is not a number', 0]},
+    {'text': 'Calculate the expression ((1 + 2)/3) + 1', 'answers': ['1', '2', '4', 1]},
+    {'text': "What is the fifth Fibonacci number? (Remember that Fibonacci's sequence begins with 0 and 1)", 'answers': ['2', '3', '5', 1]},
+    {'text': 'Every square is a rectangle?', 'answers': ['Yes', 'No', 0]},
+    {'text': 'What is the shape of xy = 1 in the cartesian plane?', 'answers': ['Elipse', 'Parabola', 'Hyperbole', 2]},
+    {'text': 'Limit of x tending to zero of sinx / x', 'answers': ['Infinity', '0', '1', 2]},
+    {'text': '(Piano Question) How many movies are in The Twilight Saga?', 'answers': ['3', '4', '5', 2]}
 ]
 
 

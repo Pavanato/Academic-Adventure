@@ -27,6 +27,8 @@ class Game:
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
 
+        self.x = 0
+
         # Game loop control
         self.running = True
 
@@ -35,13 +37,6 @@ class Game:
         self.level = Level(level_list, self.screen)
         self.menu = Menu(self.level)
     
-    def run_game(self):
-        # Game loop
-        screen.blit(pygame.image.load(r"src\graphics\backgrounds\level_1\parque2.png"), (0, 0))
-        self.level.run()
-
-        pygame.display.update()
-        clock.tick(60)
 
     def run(self):
         self.new()
@@ -59,7 +54,9 @@ class Game:
             if self.menu.current_screen == "main_menu":
                 self.menu.main_menu(r"src\graphics\backgrounds\level_1\parque2.png")
             elif self.menu.current_screen == "play":
-                self.run_game()
+                self.level.run()
+                pygame.display.flip()
+                clock.tick(60)
             elif self.menu.current_screen == "credits":
                 self.menu.credits()
             elif self.level.game_over:

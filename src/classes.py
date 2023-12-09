@@ -167,16 +167,26 @@ class NPC(Entity):
         correct_answer_index = answers[-1]  # Get the index of the correct answer
 
         # Create buttons for the answers (excluding the last element which is the correct answer index)
-        answer_buttons = [Button(image=None, pos=(640, 360 + i * 100), text_input=answer, font=get_font(50), base_color="Black", hovering_color="Green") for i, answer in enumerate(answers[:-1])]
+        answer_buttons = [Button(image=None, pos=(640, 360 + i * 100), text_input=answer, font=get_font(50), base_color="Black", hovering_color="Blue") for i, answer in enumerate(answers[:-1])]
 
         while True:
             mouse_pos = pygame.mouse.get_pos()
 
-            screen.fill("white")
+            thickness = 5
+
+            question_len = len(question_text)
+            pygame.draw.rect(screen, "black", pygame.Rect(640 - 18 * question_len - thickness, 150 - thickness, 36 * question_len + 2 * thickness, 100 + 2 * thickness))
+            pygame.draw.rect(screen, "white", pygame.Rect(640 - 18 * question_len, 150, 36 * question_len, 100))
+
+            answers_len = answers[0:3]
+            answers_len = len(max(answers_len))
+            pygame.draw.rect(screen, "black", pygame.Rect(640 - 40 * answers_len - thickness, 310 - thickness, 80* answers_len + 2 * thickness, 300 + 2 * thickness))
+            pygame.draw.rect(screen, "white", pygame.Rect(640 - 40 * answers_len, 310, 80 * answers_len, 300))
+
 
             # Display the question
-            question_surface = get_font(35).render(question_text, True, "Black")
-            question_rect = question_surface.get_rect(center=(640, 260))
+            question_surface = get_font(30).render(question_text, True, "Black")
+            question_rect = question_surface.get_rect(center=(640, 200))
             screen.blit(question_surface, question_rect)
 
             # Update and draw the answer buttons
@@ -199,6 +209,7 @@ class NPC(Entity):
                                 print("Correct answer!")
                                 return
                             else:
+                                screen.fill("black")
                                 print("Estude mais.")
                                 return
                             
@@ -285,7 +296,8 @@ class Level:
         self.current_level = 0
         self.world_shift = 0
         self.current_x = 0
-        self.background_image = pygame.image.load(r"src\graphics\backgrounds\level_1\parque2.png")
+        self.background_image = pygame.image.load(r"src\graphics\backgrounds\level_1\mapa_eh_os_guri.png")
+        self.bg_x = 0
         self.game_over = False
 
         #collectibles
@@ -413,9 +425,25 @@ class Level:
         # Level is completed when the player collides with the finish line
         return pygame.sprite.collide_rect(self.player.sprite, self.finish.sprite)
 
+    # def is_visible(self, image):
+        # Get the position of the image
+        image_x, image_y = self.world_shift, 0
+
+        # Get the position and size of the player's field of view
+        view_x, view_y, view_width, view_height = self.player.get_view()
+
+        # Check if the image is within the player's field of view
+        return (image_x >= view_x and image_x <= view_x + view_width and
+                image_y >= view_y and image_y <= view_y + view_height)
+
     def run(self):
+
+        self.bg_x += self.world_shift
+
+        screen.blit(self.background_image, (self.bg_x, 0))
+
         self.tiles.update(self.world_shift)
-        self.tiles.draw(self.display_surface)
+        # self.tiles.draw(self.display_surface)
 
         self.finish.update(self.world_shift)
         self.finish.draw(self.display_surface)
@@ -442,8 +470,6 @@ class Level:
         
         self.ui.show_health(self.collectibles_collected, 10)  # Exemplo: 10 é o valor máximo de livros a serem coletados
         self.ui.show_books(self.collectibles_collected)
-        
-        pygame.display.flip()
         
         if self.is_completed():
             self.next_level()
