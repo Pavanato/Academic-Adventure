@@ -10,6 +10,12 @@ Developed by FGV's Applied Mathematics students, this project features an exclus
 <br/> 
 <br/> Get ready to embark on a captivating journey down memory lane at this school, with a unique and engaging approach.
 
+<h3>Preview:</h3>
+
+<p align="center">
+  <img width="460" height="300" src="src/graphics/assets/gif_game_academic.gif">
+</p>
+
 <h3>Members:</h3>
 
 * [Beatriz Lúcia Teixeira de Souza](https://github.com/bealucia)
