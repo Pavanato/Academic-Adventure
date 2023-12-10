@@ -34,7 +34,7 @@ class Game:
 
     def new(self):
         # Initialize a new game
-        self.level = Level(level_list, self.screen)
+        self.level = Level(level_list, bg_list, self.screen)
         self.menu = Menu(self.level)
     
 
@@ -52,7 +52,7 @@ class Game:
                             self.menu.pause()
 
             if self.menu.current_screen == "main_menu":
-                self.menu.main_menu(r"src\graphics\backgrounds\level_1\parque2.png")
+                self.menu.main_menu(r"src\graphics\backgrounds\parque2.png")
             elif self.menu.current_screen == "play":
                 self.level.run()
                 pygame.display.flip()

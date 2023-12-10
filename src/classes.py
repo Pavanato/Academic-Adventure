@@ -21,7 +21,6 @@ def import_folder(path):
     -------
     list
         A list of surfaces (images)
-
     """
 
     surface_list = []
@@ -54,7 +53,6 @@ class Entity(pygame.sprite.Sprite):
         Initializes the entity
     
     update(self)
-
     """
 
     def __init__(self, pos):
@@ -93,8 +91,6 @@ class Tile(Entity):
     
     update(self, x_shift)
         Updates the position of the block along the x-axis.
-
-    
     """
 
     def __init__(self, pos, size):
@@ -112,7 +108,6 @@ class Tile(Entity):
         Returns
         -------
         None.
-
         """
 
         super().__init__(pos)
@@ -132,7 +127,6 @@ class Tile(Entity):
         Returns
         -------
         None.
-
         """
 
         self.rect.x += x_shift
@@ -157,7 +151,6 @@ class Finish(Tile):
     
     update(self, x_shift)
         Updates the position of the finish block along the x-axis.
-    
     """
         
     def __init__(self, pos, size):
@@ -175,7 +168,6 @@ class Finish(Tile):
         Returns
         -------
         None.
-
         """
 
         super().__init__(pos, size)
@@ -193,7 +185,6 @@ class Finish(Tile):
         Returns
         -------
         None.
-
         """
         self.rect.x += x_shift
 
@@ -263,7 +254,6 @@ class Player(Entity):
 
     animate()
         Animates the player based on the current status.
-
     """
 
     def __init__(self, pos):
@@ -303,7 +293,6 @@ class Player(Entity):
         Returns
         -------
         None.
-
         """
                 
         character_path = 'src/graphics/character/'
@@ -325,7 +314,6 @@ class Player(Entity):
         Returns
         -------
         None.
-
         """
         
         self.handle_input()
@@ -343,7 +331,6 @@ class Player(Entity):
         Returns
         -------
         None.
-
         """
 
         keys = pygame.key.get_pressed()
@@ -369,7 +356,6 @@ class Player(Entity):
         Returns
         -------
         None.
-
         """
 
         if self.direction.y < 0:
@@ -398,7 +384,6 @@ class Player(Entity):
         Returns
         -------
         None.
-
         """
 
         self.direction.y += self.gravity
@@ -415,7 +400,6 @@ class Player(Entity):
         Returns
         -------
         None.
-
         """
 
         self.direction.y = self.jump_speed
@@ -432,7 +416,6 @@ class Player(Entity):
         Returns
         -------
         None.
-
         """
 
         animation = self.animations[self.status]
@@ -477,7 +460,6 @@ class NPC(Entity):
 
     question(list_of_questions, question_index)
         Displays a question and handles player input for answering it.
-
     """
 
     def __init__(self, pos, list_of_questions, question_index):
@@ -498,7 +480,6 @@ class NPC(Entity):
         Returns
         -------
         None.
-
         """
         
         super().__init__(pos)
@@ -521,9 +502,7 @@ class NPC(Entity):
         Returns
         -------
         None.
-
         """
-
         self.rect.x += x_shift
 
     def question(self, list_of_questions, question_index):
@@ -541,7 +520,6 @@ class NPC(Entity):
         Returns
         -------
         None.
-
         """
         
         # Extract the question text and the answers
@@ -589,8 +567,10 @@ class NPC(Entity):
                             
                             # Check if the selected answer is correct
                             if i == correct_answer_index:
-
-                                print("Correct answer!")
+                                # Display the question
+                                question_surface = get_font(30).render(question_text, True, "Black")
+                                question_rect = question_surface.get_rect(center=(640, 200))
+                                screen.blit(question_surface, question_rect)            
                                 return
                             else:
                                 screen.fill("black")
@@ -600,78 +580,6 @@ class NPC(Entity):
                             
             pygame.display.update()        
         
-
-class Enemy(Entity):
-    """
-    Represents an enemy character in the game.
-
-    Attributes
-    ----------
-    image : pygame.Surface
-        Surface representing the enemy.
-
-    rect : pygame.Rect
-        Rectangular area of the enemy.
-
-    start_time : float
-        Time when the enemy is created (in seconds).
-
-    speed : int
-        Speed at which the enemy moves horizontally.
-
-    Methods
-    -------
-    update(x_shift)
-        Updates the position of the enemy along the x-axis based on time.
-
-    """
-
-    def __init__(self, pos):
-        """
-        Initializes the Enemy instance.
-
-        Parameters
-        ----------
-        pos : tuple
-            Initial position of the enemy (x, y).
-
-        Returns
-        -------
-        None.
-
-        """
-
-        super().__init__(pos)
-        self.image = pygame.Surface((50, 50))  # Set the size of the enemy
-        self.image.fill('red')  # Set the color of the enemy
-        self.rect = self.image.get_rect(topleft=pos)
-        self.start_time = time.time()  # Record the time when the enemy is created
-        self.speed = 5  # The speed at which the enemy moves
-
-    def update(self, x_shift):
-        """
-        Updates the position of the enemy along the x-axis based on time.
-
-        Parameters
-        ----------
-        x_shift : int
-            The amount to be shifted along the x-axis.
-
-        Returns
-        -------
-        None.
-
-        """
-
-        # Calculate the elapsed time since the enemy was created
-        elapsed_time = time.time() - self.start_time
-
-        # Calculate the direction of movement based on the elapsed time
-        direction = math.sin(elapsed_time * math.pi)
-
-        # Move the enemy
-        self.rect.x += self.speed * direction + x_shift
-
 
 class Collectible(Entity):
     """
@@ -832,7 +740,6 @@ class UI:
         Returns
         -------
         None.
-
         """
         
         # setup 
@@ -864,7 +771,6 @@ class UI:
         Returns
         -------
         None.
-
         """
 
         self.display_surface.blit(self.book_bar, (20, 10))
@@ -885,7 +791,6 @@ class UI:
         Returns
         -------
         None.
-        
         """
         self.display_surface.blit(self.book, self.book_rect)
         book_amount_surf = self.font.render(str(amount), False, '#33323d')
@@ -965,7 +870,7 @@ class Level:
         Runs the main logic for the level.
     """
 
-    def __init__(self, level_list, surface):
+    def __init__(self, level_list, bg_list,surface):
         """
         Initializes the Level instance.
 
@@ -980,16 +885,15 @@ class Level:
         Returns
         -------
         None.
-
         """
 
         self.display_surface = surface
         self.initialize_level(level_list[0])
+        self.background_image = pygame.image.load(bg_list[0])
         self.levels = level_list
         self.current_level = 0
         self.world_shift = 0
         self.current_x = 0
-        self.background_image = pygame.image.load(r"src\graphics\backgrounds\level_1\mapa_eh_os_guri.png")
         self.bg_x = 0
         self.game_over = False
 
@@ -1011,12 +915,10 @@ class Level:
         Returns
         -------
         None.
-
         """
 
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
-        self.enemies = pygame.sprite.Group()
         self.npcs = pygame.sprite.Group()
         self.finish = pygame.sprite.GroupSingle()
         self.collectible = pygame.sprite.Group()
@@ -1032,9 +934,6 @@ class Level:
                 if cell == 'P':
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
-                if cell == 'E':
-                    enemy_sprite = Enemy((x, y))
-                    self.enemies.add(enemy_sprite)
                 if cell == 'N':
                     npc_sprite = NPC((x, y), list_of_questions, 0)
                     self.npcs.add(npc_sprite)
@@ -1056,7 +955,6 @@ class Level:
         Returns
         -------
         None.
-
         """
         # Move to the next level
         self.current_level += 1
@@ -1064,6 +962,10 @@ class Level:
             self.current_level = -1
             self.game_over = True
             return
+
+        self.player.empty()
+        self.bg_x = 0
+        self.background_image = pygame.image.load(bg_list[self.current_level])
         self.initialize_level(self.levels[self.current_level])
 
     def scroll_x(self):
@@ -1077,17 +979,16 @@ class Level:
         Returns
         -------
         None.
-
         """
 
         player = self.player.sprite
         player_x = player.rect.centerx
         direction_x = player.direction.x
 
-        if player_x < SCREEN_WIDTH / 4 and direction_x < 0:
+        if player_x < SCREEN_WIDTH / 3 and direction_x < 0:
             self.world_shift = 8
             player.speed = 0
-        elif player_x > SCREEN_WIDTH - (SCREEN_WIDTH / 4) and direction_x > 0:
+        elif player_x > SCREEN_WIDTH - (SCREEN_WIDTH / 3) and direction_x > 0:
             self.world_shift = -8
             player.speed = 0
         else:
@@ -1105,7 +1006,6 @@ class Level:
         Returns
         -------
         None.
-
         """
 
         player = self.player.sprite
@@ -1139,7 +1039,6 @@ class Level:
         Returns
         -------
         None.
-
         """
 
         player = self.player.sprite
@@ -1172,7 +1071,6 @@ class Level:
         Returns
         -------
         None.
-
         """
 
         # Check for collisions between the player and each NPC
@@ -1181,6 +1079,7 @@ class Level:
                 # If a collision is detected, display a text box
                 npc.question(list_of_questions, index)
 
+    
     def check_collectible_collisions(self):
         """
         Checks for collisions between the player and collectibles.
@@ -1229,23 +1128,10 @@ class Level:
         -------
         bool
             True if the level is completed, False otherwise.
-
         """
 
         # Level is completed when the player collides with the finish line
         return pygame.sprite.collide_rect(self.player.sprite, self.finish.sprite)
-
-    #TODO Maybe cut this off
-    # def is_visible(self, image):
-        # Get the position of the image
-        image_x, image_y = self.world_shift, 0
-
-        # Get the position and size of the player's field of view
-        view_x, view_y, view_width, view_height = self.player.get_view()
-
-        # Check if the image is within the player's field of view
-        return (image_x >= view_x and image_x <= view_x + view_width and
-                image_y >= view_y and image_y <= view_y + view_height)
 
     def run(self):
         """
@@ -1258,7 +1144,6 @@ class Level:
         Returns
         -------
         None.
-
         """
 
         self.bg_x += self.world_shift

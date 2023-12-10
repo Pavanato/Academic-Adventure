@@ -1,66 +1,36 @@
+"""
+This module contains all the game settings.
+"""
+
 from csv import reader
 
-# Local function
 def import_csv_layout(path):
+    """
+    Function to import a CSV file and convert it into a terrain map.
+
+    Parameters:
+    path (str): The path to the CSV file.
+
+    Returns:
+    list: A list of strings representing the terrain map.
+    """
     terrain_map = []
     with open(path) as map:
         csv_reader = reader(map)
         for row in csv_reader:
-            row = [' ' if cell == '-1' else 'X' if cell == '0' else cell for cell in row]
+            row = [' ' if cell == '-1' else 'X' if cell == '0' else 'C' if cell == '12' else 'N' if cell == '3' else cell for cell in row]
             terrain_map.append(''.join(row))
     return terrain_map
     
 
-level_map1 = import_csv_layout(r"src\graphics\backgrounds\level_1\school_map.csv")
+# Importing level maps from CSV files
+level_map1 = import_csv_layout(r"src\graphics\backgrounds\outside_map.csv")
+level_map2 = import_csv_layout(r"src\graphics\backgrounds\inside_map.csv")
 
-level_map2 = [
-        "XXXXXXXXXXXXXXXXXXXX",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X                  X",
-        "X       C          X",
-        "X                  X",
-        "X              C   X",
-        "X  C               X",
-        "X          N       X",        
-        "X      N   X       X",
-        "X      X     X     X",
-        "X         C     N  X",
-        "X     F    X    x  X",
-        "X   N XX           X",
-        "X  X           X   X",
-        "X         P        X",
-        "XXXXXXXXXXXXXXXXXXXX",
-    ]
+# List of background images
+bg_list = [r"src\graphics\backgrounds\outside_map.png", r"src\graphics\backgrounds\inside_map.png"]
 
+# List of questions for the game
 list_of_questions = [
     {'text': 'Calculate 2 + 5?', 'answers': ['8', '7', '10', 1]},
     {'text': 'What is the square root of 169?', 'answers': ['13', '17', '19', 0]},
@@ -74,12 +44,12 @@ list_of_questions = [
     {'text': '(Piano Question) How many movies are in The Twilight Saga?', 'answers': ['3', '4', '5', 2]}
 ]
 
-
+# List of level maps
 level_list = [level_map1, level_map2]
 
-# Constants
-FPS = 60
-VERTICAL_TILE_NUMBER = 45
-TILE_SIZE = 16
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = len(level_map1) * TILE_SIZE
+# Game constants
+FPS = 60  # Frames per second
+VERTICAL_TILE_NUMBER = 45  # Number of vertical tiles
+TILE_SIZE = 16  # Size of each tile in pixels
+SCREEN_WIDTH = 1280  # Width of the game screen in pixels
+SCREEN_HEIGHT = len(level_map1) * TILE_SIZE  # Height of the game screen in pixels
