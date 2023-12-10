@@ -1,0 +1,1786 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.classes &#8212; Academic Adventure: From ABC to PhD  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/src/classes';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Academic Adventure: From ABC to PhD  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../modules.html">
+                        Academic-Adventure
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../modules.html">
+                        Academic-Adventure
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">src.classes</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for src.classes</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">walk</span>
+<span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">menu</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="c1"># Auxiliary function</span>
+<div class="viewcode-block" id="import_folder">
+<a class="viewcode-back" href="../../src.html#src.classes.import_folder">[docs]</a>
+<span class="k">def</span> <span class="nf">import_folder</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Import images of a folder</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path of the folder containing the images</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of surfaces (images)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">surface_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">img_files</span> <span class="ow">in</span> <span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">img_files</span><span class="p">:</span>
+            <span class="n">full_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">image</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">image_surf</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+                <span class="n">surface_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_surf</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">pygame</span><span class="o">.</span><span class="n">error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error loading image: </span><span class="si">{</span><span class="n">full_path</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">surface_list</span></div>
+
+
+
+<span class="c1"># Classes</span>
+<div class="viewcode-block" id="Entity">
+<a class="viewcode-back" href="../../src.html#src.classes.Entity">[docs]</a>
+<span class="k">class</span> <span class="nc">Entity</span><span class="p">(</span><span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for game entities.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rect : pygame.Rect</span>
+<span class="sd">        The rectangular area of the entity.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    __init__(self, pos)</span>
+<span class="sd">        Initializes the entity</span>
+<span class="sd">    </span>
+<span class="sd">    update(self)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the entity.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pos : tuple</span>
+<span class="sd">            The initial position of the entity (x, y).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Entity.update">
+<a class="viewcode-back" href="../../src.html#src.classes.Entity.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Tile">
+<a class="viewcode-back" href="../../src.html#src.classes.Tile">[docs]</a>
+<span class="k">class</span> <span class="nc">Tile</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class representing a block (tile) in the game.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : pygame.Surface</span>
+<span class="sd">        The surface (image) of the block.</span>
+
+<span class="sd">    rect : pygame.Rect</span>
+<span class="sd">        The rectangular area of the block.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    __init__(self, pos, size)</span>
+<span class="sd">        Initializes the block.</span>
+<span class="sd">    </span>
+<span class="sd">    update(self, x_shift)</span>
+<span class="sd">        Updates the position of the block along the x-axis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the block.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pos : tuple</span>
+<span class="sd">            The initial position of the block (x, y).</span>
+
+<span class="sd">        size : int</span>
+<span class="sd">            The size of the block&#39;s sides.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Surface</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">topleft</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Tile.update">
+<a class="viewcode-back" href="../../src.html#src.classes.Tile.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_shift</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the position of the block along the x-axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x_shift : int</span>
+<span class="sd">            The amount to be shifted along the x-axis.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">x_shift</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Finish">
+<a class="viewcode-back" href="../../src.html#src.classes.Finish">[docs]</a>
+<span class="k">class</span> <span class="nc">Finish</span><span class="p">(</span><span class="n">Tile</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class representing a finish block in the game.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : pygame.Surface</span>
+<span class="sd">        The surface (image) of the finish block.</span>
+
+<span class="sd">    rect : pygame.Rect</span>
+<span class="sd">        The rectangular area of the finish block.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    __init__(self, pos, size)</span>
+<span class="sd">        Initializes the finish block.</span>
+<span class="sd">    </span>
+<span class="sd">    update(self, x_shift)</span>
+<span class="sd">        Updates the position of the finish block along the x-axis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the finish block.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pos : tuple</span>
+<span class="sd">            The initial position of the finish block (x, y).</span>
+
+<span class="sd">        size : int</span>
+<span class="sd">            The size of the finish block&#39;s sides.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="Finish.update">
+<a class="viewcode-back" href="../../src.html#src.classes.Finish.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_shift</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the position of the finish block along the x-axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x_shift : int</span>
+<span class="sd">            The amount to be shifted along the x-axis.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">x_shift</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Player">
+<a class="viewcode-back" href="../../src.html#src.classes.Player">[docs]</a>
+<span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    frame_index : float</span>
+<span class="sd">        Index used for animation frames.</span>
+
+<span class="sd">    animation_speed : float</span>
+<span class="sd">        Speed of the animation.</span>
+
+<span class="sd">    image : pygame.Surface</span>
+<span class="sd">        Current image of the player.</span>
+
+<span class="sd">    direction : pygame.math.Vector2</span>
+<span class="sd">        Vector representing the player&#39;s movement direction.</span>
+
+<span class="sd">    speed : int</span>
+<span class="sd">        Speed of the player&#39;s movement.</span>
+
+<span class="sd">    _gravity : float</span>
+<span class="sd">        Acceleration which the player moves downward.</span>
+
+<span class="sd">    jump_speed : int</span>
+<span class="sd">        Vertical speed during a jump.</span>
+
+<span class="sd">    status : str</span>
+<span class="sd">        Current status of the player (e.g., &#39;idle_direita&#39;, &#39;fall&#39;, &#39;walking_right&#39;).</span>
+
+<span class="sd">    on_ground : bool</span>
+<span class="sd">        True if the player is on the ground.</span>
+
+<span class="sd">    on_ceiling : bool</span>
+<span class="sd">        True if the player is on the ceiling.</span>
+
+<span class="sd">    on_left : bool</span>
+<span class="sd">        True if the player is touching a surface on the left.</span>
+
+<span class="sd">    on_right : bool</span>
+<span class="sd">        True if the player is touching a surface on the right.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    __init__(pos)</span>
+<span class="sd">        Initializes the player instance.</span>
+
+<span class="sd">    import_character_assets()</span>
+<span class="sd">        Imports character animations.</span>
+
+<span class="sd">    update()</span>
+<span class="sd">        Updates the player&#39;s state.</span>
+
+<span class="sd">    handle_input()</span>
+<span class="sd">        Handles player input.</span>
+
+<span class="sd">    handle_status()</span>
+<span class="sd">        Handles player status based on direction.</span>
+
+<span class="sd">    apply_gravity()</span>
+<span class="sd">        Applies gravity to the player&#39;s vertical movement.</span>
+
+<span class="sd">    jump()</span>
+<span class="sd">        Initiates a jump.</span>
+
+<span class="sd">    animate()</span>
+<span class="sd">        Animates the player based on the current status.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">import_character_assets</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">animation_speed</span> <span class="o">=</span> <span class="mf">0.10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">animations</span><span class="p">[</span><span class="s1">&#39;idle_right&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_index</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">topleft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">topleft</span><span class="p">)</span>
+
+        <span class="c1"># Player movement</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gravity</span> <span class="o">=</span> <span class="mf">0.8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jump_speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span>
+
+        <span class="c1"># Player status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;idle_right&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_ground</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_ceiling</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_left</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_right</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1">#audio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__jump_sound</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">Sound</span><span class="p">(</span><span class="s1">&#39;src/audio/jump_sound.wav&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__jump_sound</span><span class="o">.</span><span class="n">set_volume</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Getter for the x-coordinate</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Getter for the y-coordinate</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="nd">@y</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setter for the y-coordinate</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@x</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setter for the x-coordinate</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">speed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Getter for the speed</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_speed</span>
+
+    <span class="nd">@speed</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">speed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Setter for the speed</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Speed must be a positive number&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_speed</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="Player.import_character_assets">
+<a class="viewcode-back" href="../../src.html#src.classes.Player.import_character_assets">[docs]</a>
+    <span class="k">def</span> <span class="nf">import_character_assets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Imports character animations.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+                
+        <span class="n">character_path</span> <span class="o">=</span> <span class="s1">&#39;src/graphics/character/&#39;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">animations</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;idle_right&#39;</span><span class="p">:[],</span><span class="s1">&#39;idle_left&#39;</span><span class="p">:[],</span> <span class="s1">&#39;running_right&#39;</span><span class="p">:[],</span> <span class="s1">&#39;running_left&#39;</span><span class="p">:[]}</span>
+
+        <span class="k">for</span> <span class="n">animation</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">animations</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">full_path</span> <span class="o">=</span> <span class="n">character_path</span> <span class="o">+</span>  <span class="n">animation</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">animations</span><span class="p">[</span><span class="n">animation</span><span class="p">]</span> <span class="o">=</span> <span class="n">import_folder</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Player.update">
+<a class="viewcode-back" href="../../src.html#src.classes.Player.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the player&#39;s state.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle_input</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle_status</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Player.handle_input">
+<a class="viewcode-back" href="../../src.html#src.classes.Player.handle_input">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles player input.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_RIGHT</span><span class="p">]</span> <span class="ow">or</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_d</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_LEFT</span><span class="p">]</span> <span class="ow">or</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_a</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_ground</span> <span class="ow">and</span> <span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]</span> <span class="ow">or</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_UP</span><span class="p">]</span> <span class="ow">or</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">jump</span><span class="p">()</span></div>
+
+            
+<div class="viewcode-block" id="Player.handle_status">
+<a class="viewcode-back" href="../../src.html#src.classes.Player.handle_status">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles player status based on direction.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;running_right&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;running_left&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;running_right&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;idle_right&#39;</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;running_left&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;idle_left&#39;</span></div>
+
+
+<div class="viewcode-block" id="Player.apply_gravity">
+<a class="viewcode-back" href="../../src.html#src.classes.Player.apply_gravity">[docs]</a>
+    <span class="k">def</span> <span class="nf">apply_gravity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies gravity to the player&#39;s vertical movement.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gravity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span></div>
+
+
+<div class="viewcode-block" id="Player.jump">
+<a class="viewcode-back" href="../../src.html#src.classes.Player.jump">[docs]</a>
+    <span class="k">def</span> <span class="nf">jump</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initiates a jump.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jump_speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__jump_sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Player.animate">
+<a class="viewcode-back" href="../../src.html#src.classes.Player.animate">[docs]</a>
+    <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Animates the player based on the current status.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">animation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">animations</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">]</span>
+
+        <span class="c1"># Check if animation list is empty</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">animation</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_index</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">animation_speed</span>
+
+        <span class="c1"># Ensure frame_index is within the range of animation list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_index</span> <span class="o">%=</span> <span class="nb">len</span><span class="p">(</span><span class="n">animation</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">animation</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_index</span><span class="p">)]</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="NPC">
+<a class="viewcode-back" href="../../src.html#src.classes.NPC">[docs]</a>
+<span class="k">class</span> <span class="nc">NPC</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a non-player character (NPC) in the game.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : pygame.Surface</span>
+<span class="sd">        Surface representing the NPC (blue rectangle).</span>
+
+<span class="sd">    rect : pygame.Rect</span>
+<span class="sd">        Rectangular area of the NPC.</span>
+
+<span class="sd">    list_of_questions : list</span>
+<span class="sd">        List of dictionaries containing questions and answers.</span>
+
+<span class="sd">    question_index : int</span>
+<span class="sd">        Index indicating the current question from the list.</span>
+
+<span class="sd">    was_answered : bool</span>
+<span class="sd">        True if the NPC&#39;s question was answered.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    update(x_shift)</span>
+<span class="sd">        Updates the position of the NPC along the x-axis.</span>
+
+<span class="sd">    question(list_of_questions, question_index)</span>
+<span class="sd">        Displays a question and handles player input for answering it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">list_of_questions</span><span class="p">,</span> <span class="n">question_index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the NPC instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pos : tuple</span>
+<span class="sd">            Initial position of the NPC (x, y).</span>
+
+<span class="sd">        list_of_questions : list</span>
+<span class="sd">            List of dictionaries containing questions and answers.</span>
+
+<span class="sd">        question_index : int</span>
+<span class="sd">            Index indicating the current question from the list.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Surface</span><span class="p">((</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">topleft</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">topleft</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_of_questions</span> <span class="o">=</span> <span class="n">list_of_questions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question_index</span> <span class="o">=</span> <span class="n">question_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">was_answered</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="NPC.update">
+<a class="viewcode-back" href="../../src.html#src.classes.NPC.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_shift</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the position of the NPC along the x-axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x_shift : int</span>
+<span class="sd">            The amount to be shifted along the x-axis.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">x_shift</span></div>
+
+
+<div class="viewcode-block" id="NPC.question">
+<a class="viewcode-back" href="../../src.html#src.classes.NPC.question">[docs]</a>
+    <span class="k">def</span> <span class="nf">question</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_questions</span><span class="p">,</span> <span class="n">question_index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Displays a question and handles player input for answering it.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        list_of_questions : list</span>
+<span class="sd">            List of dictionaries containing questions and answers.</span>
+
+<span class="sd">        question_index : int</span>
+<span class="sd">            Index indicating the current question from the list.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            1 if the answer is correct, 0 otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Extract the question text and the answers</span>
+        <span class="n">question</span> <span class="o">=</span> <span class="n">list_of_questions</span><span class="p">[</span><span class="n">question_index</span><span class="p">]</span>
+
+        <span class="n">question_text</span><span class="p">,</span> <span class="n">answers</span> <span class="o">=</span> <span class="n">question</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">question</span><span class="p">[</span><span class="s1">&#39;answers&#39;</span><span class="p">]</span>
+        <span class="n">correct_answer_index</span> <span class="o">=</span> <span class="n">answers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Get the index of the correct answer</span>
+
+        <span class="c1"># Create buttons for the answers (excluding the last element which is the correct answer index)</span>
+        <span class="n">answer_buttons</span> <span class="o">=</span> <span class="p">[</span><span class="n">Button</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">360</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span> <span class="n">text_input</span><span class="o">=</span><span class="n">answer</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">get_font</span><span class="p">(</span><span class="mi">38</span><span class="p">),</span> <span class="n">base_color</span><span class="o">=</span><span class="s2">&quot;Black&quot;</span><span class="p">,</span> <span class="n">hovering_color</span><span class="o">=</span><span class="s2">&quot;Blue&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">answers</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">mouse_pos</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+
+            <span class="n">thickness</span> <span class="o">=</span> <span class="mi">5</span>
+
+            <span class="n">question_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">question_text</span><span class="p">)</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">640</span> <span class="o">-</span> <span class="mi">18</span> <span class="o">*</span> <span class="n">question_len</span> <span class="o">-</span> <span class="n">thickness</span><span class="p">,</span> <span class="mi">150</span> <span class="o">-</span> <span class="n">thickness</span><span class="p">,</span> <span class="mi">36</span> <span class="o">*</span> <span class="n">question_len</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">thickness</span><span class="p">,</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">thickness</span><span class="p">))</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">640</span> <span class="o">-</span> <span class="mi">18</span> <span class="o">*</span> <span class="n">question_len</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">36</span> <span class="o">*</span> <span class="n">question_len</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+            <span class="n">answers_len</span> <span class="o">=</span> <span class="n">answers</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">answers_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">answers_len</span><span class="p">))</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">640</span> <span class="o">-</span> <span class="mi">40</span> <span class="o">*</span> <span class="n">answers_len</span> <span class="o">-</span> <span class="n">thickness</span><span class="p">,</span> <span class="mi">310</span> <span class="o">-</span> <span class="n">thickness</span><span class="p">,</span> <span class="mi">80</span><span class="o">*</span> <span class="n">answers_len</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">thickness</span><span class="p">,</span> <span class="mi">300</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">thickness</span><span class="p">))</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">640</span> <span class="o">-</span> <span class="mi">40</span> <span class="o">*</span> <span class="n">answers_len</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">80</span> <span class="o">*</span> <span class="n">answers_len</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+
+
+            <span class="c1"># Split the question into lines</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">question_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Display each line separately</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+                <span class="n">line_surface</span> <span class="o">=</span> <span class="n">get_font</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Black&quot;</span><span class="p">)</span>
+                <span class="n">line_rect</span> <span class="o">=</span> <span class="n">line_surface</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">200</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">30</span><span class="p">))</span>  <span class="c1"># Adjust the y-coordinate for each line</span>
+                <span class="n">screen</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">line_surface</span><span class="p">,</span> <span class="n">line_rect</span><span class="p">)</span>
+
+            <span class="c1"># Update and draw the answer buttons</span>
+            <span class="k">for</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">answer_buttons</span><span class="p">:</span>
+                <span class="n">button</span><span class="o">.</span><span class="n">change_color</span><span class="p">(</span><span class="n">mouse_pos</span><span class="p">)</span>
+                <span class="n">button</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">screen</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+                    <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">MOUSEBUTTONDOWN</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">button</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">answer_buttons</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">button</span><span class="o">.</span><span class="n">check_for_input</span><span class="p">(</span><span class="n">mouse_pos</span><span class="p">):</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">was_answered</span> <span class="o">=</span> <span class="kc">True</span>
+                            
+                            <span class="c1"># Check if the selected answer is correct</span>
+                            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">correct_answer_index</span><span class="p">:</span>
+                                <span class="c1"># Display a message indicating that the answer is correct</span>
+                                <span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>                                
+                                <span class="n">answer_event</span> <span class="o">=</span> <span class="n">get_font</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;CORRECT ANSWER&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">)</span>
+                                <span class="n">answer_rect</span><span class="o">=</span> <span class="n">answer_event</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+                                <span class="n">screen</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">answer_event</span><span class="p">,</span> <span class="n">answer_rect</span><span class="p">)</span>
+                                <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+                                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>           
+                                <span class="k">return</span> <span class="mi">1</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="c1"># Display a message indicating that the answer is incorrect</span>
+                                <span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>                                
+                                <span class="n">answer_event</span> <span class="o">=</span> <span class="n">get_font</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;INCORRECT ANSWER&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">)</span>
+                                <span class="n">answer_rect</span><span class="o">=</span> <span class="n">answer_event</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+                                <span class="n">screen</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">answer_event</span><span class="p">,</span> <span class="n">answer_rect</span><span class="p">)</span>
+                                <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+                                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
+                                <span class="k">return</span> <span class="mi">0</span>
+                            
+                            
+            <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>        </div>
+</div>
+
+        
+
+<div class="viewcode-block" id="Collectible">
+<a class="viewcode-back" href="../../src.html#src.classes.Collectible">[docs]</a>
+<span class="k">class</span> <span class="nc">Collectible</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a collectible item in the game.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : pygame.Surface</span>
+<span class="sd">        Surface representing the collectible.</span>
+
+<span class="sd">    rect : pygame.Rect</span>
+<span class="sd">        Rectangular area of the collectible.</span>
+
+<span class="sd">    value : int</span>
+<span class="sd">        Value associated with the collectible.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    __change_books(amount)</span>
+<span class="sd">        Changes the number of books collected and updates the UI.</span>
+
+<span class="sd">    __change_health(amount)</span>
+<span class="sd">        Changes the player&#39;s health by the specified amount.</span>
+
+<span class="sd">    update(x_shift)</span>
+<span class="sd">        Updates the position of the collectible along the x-axis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the Collectible instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pos : tuple</span>
+<span class="sd">            Initial position of the collectible (x, y).</span>
+
+<span class="sd">        value : int</span>
+<span class="sd">            Value associated with the collectible.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;src/graphics/collectibles/book.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+        <span class="n">rect_image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Surface</span><span class="p">((</span><span class="n">rect_image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">rect_image</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="n">pygame</span><span class="o">.</span><span class="n">SRCALPHA</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">topleft</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">__change_books</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the number of books collected and updates the UI.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        amount : int</span>
+<span class="sd">            The change in the number of books collected.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">book</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui_instance</span><span class="o">.</span><span class="n">show_books</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">book</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__change_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the player&#39;s health by the specified amount.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        amount : int</span>
+<span class="sd">            The change in the player&#39;s health.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cur_health</span> <span class="o">+=</span> <span class="n">amount</span>
+
+<div class="viewcode-block" id="Collectible.update">
+<a class="viewcode-back" href="../../src.html#src.classes.Collectible.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_shift</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the position of the collectible along the x-axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x_shift : int</span>
+<span class="sd">            The amount to be shifted along the x-axis.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">x_shift</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="UI">
+<a class="viewcode-back" href="../../src.html#src.classes.UI">[docs]</a>
+<span class="k">class</span> <span class="nc">UI</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the user interface in the game.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    display_surface : pygame.Surface</span>
+<span class="sd">        The display surface for rendering the UI.</span>
+
+<span class="sd">    book_bar : pygame.Surface</span>
+<span class="sd">        The image representing the book bar.</span>
+
+<span class="sd">    book_bar_topleft : tuple</span>
+<span class="sd">        The top-left coordinates of the book bar.</span>
+
+<span class="sd">    bar_max_width : int</span>
+<span class="sd">        The maximum width of the book bar.</span>
+
+<span class="sd">    bar_height : int</span>
+<span class="sd">        The height of the book bar.</span>
+
+<span class="sd">    book : pygame.Surface</span>
+<span class="sd">        The image representing a book.</span>
+
+<span class="sd">    book_rect : pygame.Rect</span>
+<span class="sd">        The rectangular area of the book image.</span>
+
+<span class="sd">    font : pygame.font.Font</span>
+<span class="sd">        The font used for rendering text on the UI.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    show_health(current, full)</span>
+<span class="sd">        Displays the health bar on the UI based on the current and full health values.</span>
+
+<span class="sd">    show_books(amount)</span>
+<span class="sd">        Displays the collected books and their amount on the UI.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">book_bar_image_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the UI instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        surface : pygame.Surface</span>
+<span class="sd">            The display surface for rendering the UI.</span>
+
+<span class="sd">        book_bar_image_path : str</span>
+<span class="sd">            The file path for the image representing the book bar.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># setup </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span> <span class="o">=</span> <span class="n">surface</span> 
+
+        <span class="c1"># health </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">book_bar</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">book_bar_image_path</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">book_bar_topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bar_max_width</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bar_height</span> <span class="o">=</span> <span class="mi">4</span>
+
+        <span class="c1"># books</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">book</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;src/graphics/collectibles/book.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">book_rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">book</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">topleft</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">61</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UI.show_health">
+<a class="viewcode-back" href="../../src.html#src.classes.UI.show_health">[docs]</a>
+    <span class="k">def</span> <span class="nf">show_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">full</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Displays the health bar on the UI based on the current and full health values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        current : int</span>
+<span class="sd">            The current health value.</span>
+
+<span class="sd">        full : int</span>
+<span class="sd">            The full health value.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">book_bar</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="n">current_book_ratio</span> <span class="o">=</span> <span class="n">current</span> <span class="o">/</span> <span class="n">full</span>
+        <span class="n">current_bar_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bar_max_width</span> <span class="o">*</span> <span class="n">current_book_ratio</span>
+        <span class="n">health_bar_rect</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">book_bar_topleft</span><span class="p">,</span> <span class="p">(</span><span class="n">current_bar_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bar_height</span><span class="p">))</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span><span class="p">,</span> <span class="s1">&#39;#dc4949&#39;</span><span class="p">,</span> <span class="n">health_bar_rect</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UI.show_books">
+<a class="viewcode-back" href="../../src.html#src.classes.UI.show_books">[docs]</a>
+    <span class="k">def</span> <span class="nf">show_books</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Displays the collected books and their amount on the UI.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        amount : int</span>
+<span class="sd">            The number of collected books.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">book</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">book_rect</span><span class="p">)</span>
+        <span class="n">book_amount_surf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;#33323d&#39;</span><span class="p">)</span>
+        <span class="n">book_amount_rect</span> <span class="o">=</span> <span class="n">book_amount_surf</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">midleft</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">book_rect</span><span class="o">.</span><span class="n">right</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">book_rect</span><span class="o">.</span><span class="n">centery</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">book_amount_surf</span><span class="p">,</span> <span class="n">book_amount_rect</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Level">
+<a class="viewcode-back" href="../../src.html#src.classes.Level">[docs]</a>
+<span class="k">class</span> <span class="nc">Level</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a level in the game.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    display_surface : pygame.Surface</span>
+<span class="sd">        The display surface for rendering the level.</span>
+
+<span class="sd">    levels : list</span>
+<span class="sd">        List containing level layouts.</span>
+
+<span class="sd">    current_level : int</span>
+<span class="sd">        Index of the current level.</span>
+
+<span class="sd">    world_shift : int</span>
+<span class="sd">        Horizontal shift of the world.</span>
+
+<span class="sd">    current_x : int</span>
+<span class="sd">        Current x-coordinate.</span>
+
+<span class="sd">    background_image : pygame.Surface</span>
+<span class="sd">        The background image of the level.</span>
+
+<span class="sd">    bg_x : int</span>
+<span class="sd">        Background x-coordinate.</span>
+
+<span class="sd">    game_over : bool</span>
+<span class="sd">        Flag indicating whether the game is over.</span>
+
+<span class="sd">    collectibles_collected : int</span>
+<span class="sd">        Number of collectibles (books) collected.</span>
+
+<span class="sd">    book_bar : pygame.Surface</span>
+<span class="sd">        Image representing the book bar.</span>
+
+<span class="sd">    ui : UI</span>
+<span class="sd">        The user interface for the level.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    initialize_level(layout)</span>
+<span class="sd">        Initializes the level based on the given layout.</span>
+
+<span class="sd">    next_level()</span>
+<span class="sd">        Moves to the next level.</span>
+
+<span class="sd">    scroll_x()</span>
+<span class="sd">        Handles horizontal scrolling based on player position.</span>
+
+<span class="sd">    horizontal_movement_collision()</span>
+<span class="sd">        Handles collisions during horizontal movement.</span>
+
+<span class="sd">    vertical_movement_collision()</span>
+<span class="sd">        Handles collisions during vertical movement.</span>
+
+<span class="sd">    check_npc_collision()</span>
+<span class="sd">        Checks for collisions between the player and NPCs.</span>
+
+<span class="sd">    check_collectible_collisions()</span>
+<span class="sd">        Checks for collisions between the player and collectibles.</span>
+
+<span class="sd">    change_collectible(value)</span>
+<span class="sd">        Changes the number of collected collectibles.</span>
+
+<span class="sd">    is_completed()</span>
+<span class="sd">        Checks if the level is completed.</span>
+
+<span class="sd">    run()</span>
+<span class="sd">        Runs the main logic for the level.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level_list</span><span class="p">,</span> <span class="n">bg_list</span><span class="p">,</span><span class="n">surface</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the Level instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        level_list : list</span>
+<span class="sd">            List containing level layouts.</span>
+
+<span class="sd">        surface : pygame.Surface</span>
+<span class="sd">            The display surface for rendering the level.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span> <span class="o">=</span> <span class="n">surface</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize_level</span><span class="p">(</span><span class="n">level_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">background_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">bg_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">levels</span> <span class="o">=</span> <span class="n">level_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_level</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bg_x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1">#collectibles</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collectibles_collected</span> <span class="o">=</span> <span class="mi">0</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">book_bar</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;src/graphics/collectibles/book_bar.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert_alpha</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">UI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span><span class="p">,</span> <span class="s1">&#39;src/graphics/collectibles/book_bar.png&#39;</span><span class="p">)</span>  <span class="c1"># Add the UI to the level</span>
+
+<div class="viewcode-block" id="Level.initialize_level">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.initialize_level">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the level based on the given layout.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        layout : list</span>
+<span class="sd">            Layout representing the level.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tiles</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">GroupSingle</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">npcs</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">finish</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">GroupSingle</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collectible</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">row_index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">layout</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">col_index</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">col_index</span> <span class="o">*</span> <span class="n">TILE_SIZE</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">row_index</span> <span class="o">*</span> <span class="n">TILE_SIZE</span>
+
+                <span class="k">if</span> <span class="n">cell</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+                    <span class="n">tile</span> <span class="o">=</span> <span class="n">Tile</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">TILE_SIZE</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">tiles</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tile</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cell</span> <span class="o">==</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span>
+                    <span class="n">player_sprite</span> <span class="o">=</span> <span class="n">Player</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">player_sprite</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cell</span> <span class="o">==</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span>
+                    <span class="n">npc_sprite</span> <span class="o">=</span> <span class="n">NPC</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">list_of_questions</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">npcs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">npc_sprite</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cell</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+                    <span class="n">finish_sprite</span> <span class="o">=</span> <span class="n">Finish</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">TILE_SIZE</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">finish_sprite</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cell</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+                    <span class="n">collectible_sprite</span> <span class="o">=</span> <span class="n">Collectible</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">collectible</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">collectible_sprite</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Level.next_level">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.next_level">[docs]</a>
+    <span class="k">def</span> <span class="nf">next_level</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Moves to the next level.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Check if the current level is the last one</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_level</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">levels</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">return</span>
+        
+        <span class="c1"># Move to the next level</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_level</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bg_x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">background_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">bg_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_level</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize_level</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_level</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="Level.restart">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.restart">[docs]</a>
+    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restarts the game.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collectibles_collected</span> <span class="o">=</span> <span class="mi">0</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">bg_x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_level</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">background_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">bg_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_level</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize_level</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_level</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="Level.scroll_x">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.scroll_x">[docs]</a>
+    <span class="k">def</span> <span class="nf">scroll_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles horizontal scrolling based on player position.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">sprite</span>
+        <span class="n">player_x</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span>
+        <span class="n">direction_x</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span>
+
+        <span class="k">if</span> <span class="n">player_x</span> <span class="o">&lt;</span> <span class="n">SCREEN_WIDTH</span> <span class="o">/</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">direction_x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span> <span class="o">=</span> <span class="mi">8</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">player_x</span> <span class="o">&gt;</span> <span class="n">SCREEN_WIDTH</span> <span class="o">-</span> <span class="p">(</span><span class="n">SCREEN_WIDTH</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="n">direction_x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">8</span></div>
+
+
+<div class="viewcode-block" id="Level.horizontal_movement_collision">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.horizontal_movement_collision">[docs]</a>
+    <span class="k">def</span> <span class="nf">horizontal_movement_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles collisions during horizontal movement.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">sprite</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">player</span><span class="o">.</span><span class="n">speed</span>
+
+        <span class="k">for</span> <span class="n">sprite</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tiles</span><span class="o">.</span><span class="n">sprites</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">sprite</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">colliderect</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">sprite</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">right</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">on_left</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">current_x</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">left</span>
+
+                <span class="k">elif</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">sprite</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">left</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">on_right</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">current_x</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">right</span>
+
+        <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">on_left</span> <span class="ow">and</span> <span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">left</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_x</span> <span class="ow">or</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">on_left</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">on_right</span> <span class="ow">and</span> <span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">right</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_x</span> <span class="ow">or</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">on_right</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Level.vertical_movement_collision">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.vertical_movement_collision">[docs]</a>
+    <span class="k">def</span> <span class="nf">vertical_movement_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles collisions during vertical movement.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">sprite</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">apply_gravity</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">sprite</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tiles</span><span class="o">.</span><span class="n">sprites</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">sprite</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">colliderect</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">bottom</span> <span class="o">=</span> <span class="n">sprite</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">top</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">on_ground</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">elif</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="n">sprite</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">bottom</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">player</span><span class="o">.</span><span class="n">on_ceiling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">on_ground</span> <span class="ow">and</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">on_ground</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">on_ceiling</span> <span class="ow">and</span> <span class="n">player</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">on_ceiling</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+    
+<div class="viewcode-block" id="Level.check_npc_collision">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.check_npc_collision">[docs]</a>
+    <span class="k">def</span> <span class="nf">check_npc_collision</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks for collisions between the player and NPCs.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Check for collisions between the player and each NPC</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">npc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">npcs</span><span class="o">.</span><span class="n">sprites</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">npc</span><span class="o">.</span><span class="n">was_answered</span> <span class="ow">and</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">collide_rect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">sprite</span><span class="p">,</span> <span class="n">npc</span><span class="p">):</span>
+                <span class="c1"># If a collision is detected, display a text box</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">+=</span> <span class="n">npc</span><span class="o">.</span><span class="n">question</span><span class="p">(</span><span class="n">list_of_questions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_level</span><span class="p">],</span> <span class="n">index</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Level.check_collectible_collisions">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.check_collectible_collisions">[docs]</a>
+    <span class="k">def</span> <span class="nf">check_collectible_collisions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks for collisions between the player and collectibles.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">collided_collectible</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">spritecollide</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">sprite</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">collectible</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+       		
+        <span class="k">for</span> <span class="n">collectible</span> <span class="ow">in</span> <span class="n">collided_collectible</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">change_collectible</span><span class="p">(</span><span class="n">collectible</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Level.change_collectible">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.change_collectible">[docs]</a>
+    <span class="k">def</span> <span class="nf">change_collectible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the number of collected collectibles.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : int</span>
+<span class="sd">            The change in the number of collectibles.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">collectibles_collected</span> <span class="o">+=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="Level.show_score">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.show_score">[docs]</a>
+    <span class="k">def</span> <span class="nf">show_score</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Displays the score on the screen.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">score_surface</span> <span class="o">=</span> <span class="n">get_font</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Grade: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">/10&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Black&quot;</span><span class="p">)</span>
+        <span class="n">score_rect</span> <span class="o">=</span> <span class="n">score_surface</span><span class="o">.</span><span class="n">get_rect</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">1080</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">score_surface</span><span class="p">,</span> <span class="n">score_rect</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Level.is_completed">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.is_completed">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_completed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if the level is completed.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the level is completed, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Level is completed when the player collides with the finish line</span>
+        <span class="k">return</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">collide_rect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">sprite</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="o">.</span><span class="n">sprite</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Level.run">
+<a class="viewcode-back" href="../../src.html#src.classes.Level.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Runs the main logic for the level.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bg_x</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span>
+
+        <span class="n">screen</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">background_image</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bg_x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tiles</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span><span class="p">)</span>
+        <span class="c1"># self.tiles.draw(self.display_surface)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span><span class="p">)</span>
+        <span class="c1"># self.finish.draw(self.display_surface)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">scroll_x</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">horizontal_movement_collision</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertical_movement_collision</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">npcs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span><span class="p">)</span>
+        <span class="c1"># self.npcs.draw(self.display_surface)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_npc_collision</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">collectible</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">world_shift</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collectible</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">display_surface</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_collectible_collisions</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">show_health</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">collectibles_collected</span><span class="p">,</span> <span class="mf">16.95</span><span class="p">)</span>  <span class="c1"># Display the health bar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">show_books</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">collectibles_collected</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show_score</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_completed</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">next_level</span><span class="p">()</span></div>
+</div>
+
+
+
+<span class="c1"># Main</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="c1"># Initialize pygame</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+    <span class="c1"># Initialize the font module separately</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+    <span class="c1"># Now you can use pygame&#39;s font module</span>
+    <span class="n">font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="s2">&quot;graphics/button/font.ttf&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+    <span class="c1"># Example usage of the classes</span>
+    <span class="n">level_data</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;XXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X                  X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X         P        X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X                  X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X      X           X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X                  X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X          E       X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X     XE           X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X                  X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;X           E      X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;XXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">screen</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">))</span>
+    <span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+    <span class="n">game_level</span> <span class="o">=</span> <span class="n">Level</span><span class="p">(</span><span class="n">level_data</span><span class="p">,</span> <span class="n">screen</span><span class="p">)</span>
+
+
+    <span class="n">SCREEN</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">))</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s2">&quot;Menu&quot;</span><span class="p">)</span>
+
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">Menu</span><span class="p">(</span><span class="n">game_level</span><span class="p">)</span>
+
+    <span class="n">menu</span><span class="o">.</span><span class="n">main_menu</span><span class="p">(</span><span class="n">background_image_path</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;graphics\button\Background.png&quot;</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Beatriz, Eduardo, Gabriel, Roberta.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
