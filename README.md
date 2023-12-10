@@ -16,6 +16,14 @@ Developed by FGV's Applied Mathematics students, this project features an exclus
   <img width="460" height="300" src="src/graphics/assets/gif_game_academic.gif">
 </p>
 
+
+<h3>Sphinx:</h3>
+
+https://pavanato.github.io/Academic-Adventure/
+
+<h3>Equipe:</h3>
+
+
 <h3>Members:</h3>
 
 * [Beatriz Lúcia Teixeira de Souza](https://github.com/bealucia)
