@@ -394,20 +394,70 @@ class Menu:
         None.
         
         """
-        self.level.display_surface.fill((0, 0, 0))  # fill the screen with black
 
-        font = pygame.font.Font(None, 72)  # create a font object
-        text = font.render("Game Over", True, (255, 255, 255))  # create a text surface
-        rect = text.get_rect(center=(640, 360))  # get the rectangle of the text surface
-        self.level.display_surface.blit(text, rect)  # blit the text surface to the screen
+        fade_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))  # create a new surface
+        fade_surface.fill((0, 0, 0))  # fill the surface with black
+
+        for alpha in range(0, 300):
+            fade_surface.set_alpha(alpha)  # set the alpha value
+            self.level.display_surface.blit(fade_surface, (0, 0))  # blit the surface to the screen
+            pygame.display.update()  # update the display
+            pygame.time.delay(5)  # delay to create the fade effect
+
+        if self.level.score < 6:
+            text = get_font(40).render("You need to study more!", True, "Red")
+            rect = text.get_rect(center=(640, 300))  # get the rectangle of the text surface
+            self.level.display_surface.blit(text, rect)  # blit the text surface to the screen
+
+            text = get_font(40).render(f"Your final grade was {self.level.score} / 10", True, "Red")
+            rect = text.get_rect(center=(640, 400))
+            self.level.display_surface.blit(text, rect)
+
+        elif self.level.score >= 6 and self.level.score < 10:
+            text = get_font(40).render("You did well!", True, "Green")
+            rect = text.get_rect(center=(640, 300))
+            self.level.display_surface.blit(text, rect)
+
+            text = get_font(40).render(f"Your final grade was {self.level.score} / 10", True, "Green")
+            rect = text.get_rect(center=(640, 400))
+            self.level.display_surface.blit(text, rect)
+        
+        elif self.level.score >= 10:
+            text = get_font(40).render("You did great! Congratulations!", True, "Blue")
+            rect = text.get_rect(center=(640, 300))
+            self.level.display_surface.blit(text, rect)
+
+            text = get_font(40).render(f"Your final grade was {self.level.score} / 10", True, "Blue")
+            rect = text.get_rect(center=(640, 400))
+            self.level.display_surface.blit(text, rect)
+
 
         pygame.display.flip()  # update the display
+        print("teasd")
 
         while True:
+            pause_mouse_pos = pygame.mouse.get_pos()
+
+            restart_button = Button(image=None, pos=(640, 450),
+                                text_input="RESTART", font=get_font(35), base_color="white", hovering_color="blue")
+            menu_button = Button(image=None, pos=(640, 530),
+                                text_input="MENU", font=get_font(35), base_color="white", hovering_color="blue")
+            
+            for button in [restart_button, menu_button]:
+                button.change_color(pause_mouse_pos)
+                button.update(screen)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    self.current_screen = "main_menu"  # return to the main menu
-                    return
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if restart_button.check_for_input(pause_mouse_pos):
+                        self.current_screen = "play"
+                        self.level.restart() # restart the level
+                        return
+                    if menu_button.check_for_input(pause_mouse_pos):
+                        self.current_screen = "main_menu"
+                        self.level.restart()
+
+            pygame.display.update()

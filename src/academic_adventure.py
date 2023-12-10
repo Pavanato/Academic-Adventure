@@ -68,8 +68,8 @@ class Game:
         # Create the screen and clock
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
-
-        self.x = 0
+        
+        # self.x = 0
 
         # Game loop control
         self.running = True
@@ -86,6 +86,7 @@ class Game:
         -------
         None.
         """
+        # Create a new level and menu
         self.level = Level(level_list, bg_list, self.screen)
         self.menu = Menu(self.level)
     
@@ -102,28 +103,31 @@ class Game:
         -------
         None.
         """
+        # Game loop
         self.new()
-
+        
         while self.running:            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
 
+                # Pause the game
                 if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_ESCAPE:  # 'ESC' key to pause the game
                             self.menu.current_screen = "pause"
                             self.menu.pause()
 
+            # Update the game state and render the game
             if self.menu.current_screen == "main_menu":
-                self.menu.main_menu(r"src\graphics\backgrounds\parque2.png")
+                self.menu.main_menu(r"src\graphics\backgrounds\menu_bg.png")
+            elif self.level.game_over:
+                self.menu.game_over()
             elif self.menu.current_screen == "play":
                 self.level.run()
                 pygame.display.flip()
                 clock.tick(60)
             elif self.menu.current_screen == "credits":
                 self.menu.credits()
-            elif self.level.game_over:
-                self.menu.game_over()
     
         pygame.quit()
 

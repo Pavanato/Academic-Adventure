@@ -2,7 +2,6 @@ import pygame
 from os import walk
 from settings import *
 from menu import *
-import math
 import time
 import sys
 
@@ -67,7 +66,6 @@ class Entity(pygame.sprite.Sprite):
         super().__init__()
         self.rect = pygame.Rect(pos[0], pos[1], 0, 0)
 
-    #TODO look at this function
     def update(self):
         pass
 
@@ -208,7 +206,7 @@ class Player(Entity):
     speed : int
         Speed of the player's movement.
 
-    gravity : float
+    _gravity : float
         Acceleration which the player moves downward.
 
     jump_speed : int
@@ -269,7 +267,7 @@ class Player(Entity):
 
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 8
-        self.gravity = 0.8
+        self._gravity = 0.8
         self.jump_speed = -16
 
         self.status = 'idle_direita'
@@ -279,8 +277,8 @@ class Player(Entity):
         self.on_right = False
 
         #audio
-        self.jump_sound = pygame.mixer.Sound('src/audio/jump_sound.wav')
-        self.jump_sound.set_volume(0.8)
+        self.__jump_sound = pygame.mixer.Sound('src/audio/jump_sound.wav')
+        self.__jump_sound.set_volume(0.8)
 
     def import_character_assets(self):
         """
@@ -386,7 +384,7 @@ class Player(Entity):
         None.
         """
 
-        self.direction.y += self.gravity
+        self.direction.y += self._gravity
         self.rect.y += self.direction.y
 
     def jump(self):
@@ -403,7 +401,7 @@ class Player(Entity):
         """
 
         self.direction.y = self.jump_speed
-        self.jump_sound.play()
+        self.__jump_sound.play()
 
     def animate(self):
         """
@@ -519,7 +517,8 @@ class NPC(Entity):
 
         Returns
         -------
-        None.
+        int
+            1 if the answer is correct, 0 otherwise.
         """
         
         # Extract the question text and the answers
@@ -529,7 +528,7 @@ class NPC(Entity):
         correct_answer_index = answers[-1]  # Get the index of the correct answer
 
         # Create buttons for the answers (excluding the last element which is the correct answer index)
-        answer_buttons = [Button(image=None, pos=(640, 360 + i * 100), text_input=answer, font=get_font(50), base_color="Black", hovering_color="Blue") for i, answer in enumerate(answers[:-1])]
+        answer_buttons = [Button(image=None, pos=(640, 360 + i * 100), text_input=answer, font=get_font(38), base_color="Black", hovering_color="Blue") for i, answer in enumerate(answers[:-1])]
 
         while True:
             mouse_pos = pygame.mouse.get_pos()
@@ -546,10 +545,14 @@ class NPC(Entity):
             pygame.draw.rect(screen, "white", pygame.Rect(640 - 40 * answers_len, 310, 80 * answers_len, 300))
 
 
-            # Display the question
-            question_surface = get_font(30).render(question_text, True, "Black")
-            question_rect = question_surface.get_rect(center=(640, 200))
-            screen.blit(question_surface, question_rect)
+            # Split the question into lines
+            lines = question_text.split('\n')
+
+            # Display each line separately
+            for i, line in enumerate(lines):
+                line_surface = get_font(30).render(line, True, "Black")
+                line_rect = line_surface.get_rect(center=(640, 200 + i * 30))  # Adjust the y-coordinate for each line
+                screen.blit(line_surface, line_rect)
 
             # Update and draw the answer buttons
             for button in answer_buttons:
@@ -567,15 +570,23 @@ class NPC(Entity):
                             
                             # Check if the selected answer is correct
                             if i == correct_answer_index:
-                                # Display the question
-                                question_surface = get_font(30).render(question_text, True, "Black")
-                                question_rect = question_surface.get_rect(center=(640, 200))
-                                screen.blit(question_surface, question_rect)            
-                                return
+                                # Display a message indicating that the answer is correct
+                                screen.fill("black")                                
+                                answer_event = get_font(30).render("CORRECT ANSWER", True, "Green")
+                                answer_rect= answer_event.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+                                screen.blit(answer_event, answer_rect)
+                                pygame.display.flip()
+                                time.sleep(2.5)           
+                                return 1
                             else:
-                                screen.fill("black")
-                                print("Estude mais.")
-                                return
+                                # Display a message indicating that the answer is incorrect
+                                screen.fill("black")                                
+                                answer_event = get_font(30).render("INCORRECT ANSWER", True, "Red")
+                                answer_rect= answer_event.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+                                screen.blit(answer_event, answer_rect)
+                                pygame.display.flip()
+                                time.sleep(2.5)
+                                return 0
                             
                             
             pygame.display.update()        
@@ -598,10 +609,10 @@ class Collectible(Entity):
 
     Methods
     -------
-    change_books(amount)
+    __change_books(amount)
         Changes the number of books collected and updates the UI.
 
-    change_health(amount)
+    __change_health(amount)
         Changes the player's health by the specified amount.
 
     update(x_shift)
@@ -634,7 +645,7 @@ class Collectible(Entity):
         self.rect = self.image.get_rect(topleft=pos)
         self.value = value
 
-    def change_books(self, amount):
+    def __change_books(self, amount):
         """
         Changes the number of books collected and updates the UI.
 
@@ -652,7 +663,7 @@ class Collectible(Entity):
         self.book += amount
         self.ui_instance.show_books(self.book)
 
-    def change_health(self, amount):
+    def __change_health(self, amount):
         """
         Changes the player's health by the specified amount.
 
@@ -896,10 +907,10 @@ class Level:
         self.current_x = 0
         self.bg_x = 0
         self.game_over = False
+        self.score = 0
 
         #collectibles
         self.collectibles_collected = 0 
-        # self.change_books = change_books
         self.book_bar = pygame.image.load('src/graphics/collectibles/book_bar.png').convert_alpha()
         self.ui = UI(self.display_surface, 'src/graphics/collectibles/book_bar.png')  # Add the UI to the level
 
@@ -956,15 +967,38 @@ class Level:
         -------
         None.
         """
-        # Move to the next level
-        self.current_level += 1
-        if self.current_level >= len(self.levels):
-            self.current_level = -1
+        
+        # Check if the current level is the last one
+        if self.current_level == len(self.levels) - 1:
             self.game_over = True
             return
-
+        
+        # Move to the next level
+        self.current_level += 1
         self.player.empty()
         self.bg_x = 0
+        self.background_image = pygame.image.load(bg_list[self.current_level])
+        self.initialize_level(self.levels[self.current_level])
+
+    def restart(self):
+        """
+        Restarts the game.
+
+        Parameters
+        ----------
+        None.
+
+        Returns
+        -------
+        None.
+        """
+        self.current_x = 0
+        self.game_over = False
+        self.score = 0
+        self.collectibles_collected = 0 
+        self.bg_x = 0
+        self.current_level = 0
+        self.player.empty()
         self.background_image = pygame.image.load(bg_list[self.current_level])
         self.initialize_level(self.levels[self.current_level])
 
@@ -1077,7 +1111,7 @@ class Level:
         for index, npc in enumerate(self.npcs.sprites()):
             if not npc.was_answered and pygame.sprite.collide_rect(self.player.sprite, npc):
                 # If a collision is detected, display a text box
-                npc.question(list_of_questions, index)
+                self.score += npc.question(list_of_questions, index)
 
     
     def check_collectible_collisions(self):
@@ -1115,6 +1149,22 @@ class Level:
         """
 
         self.collectibles_collected += value
+
+    def show_score(self):
+        """
+        Displays the score on the screen.
+
+        Parameters
+        ----------
+        None.
+
+        Returns
+        -------
+        None.
+        """
+        score_surface = get_font(30).render(f"Grade: {self.score}/10", True, "Black")
+        score_rect = score_surface.get_rect(center=(1080, 50))
+        screen.blit(score_surface, score_rect)
 
     def is_completed(self):
         """
@@ -1178,6 +1228,8 @@ class Level:
         
         self.ui.show_health(self.collectibles_collected, 10)  # Exemplo: 10 é o valor máximo de livros a serem coletados
         self.ui.show_books(self.collectibles_collected)
+
+        self.show_score()
         
         if self.is_completed():
             self.next_level()
