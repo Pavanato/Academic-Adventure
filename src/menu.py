@@ -410,7 +410,7 @@ class Menu:
             rect = text.get_rect(center=(640, 300))  # get the rectangle of the text surface
             self.level.display_surface.blit(text, rect)  # blit the text surface to the screen
 
-            text = get_font(40).render(f"Your final grade was {self.level.score} / 10", True, "Red")
+            text = get_font(40).render(f"Your final grade is {self.level.score} / 10", True, "Red")
             rect = text.get_rect(center=(640, 400))
             self.level.display_surface.blit(text, rect)
 
@@ -419,7 +419,7 @@ class Menu:
             rect = text.get_rect(center=(640, 300))
             self.level.display_surface.blit(text, rect)
 
-            text = get_font(40).render(f"Your final grade was {self.level.score} / 10", True, "Green")
+            text = get_font(40).render(f"Your final grade is {self.level.score} / 10", True, "Green")
             rect = text.get_rect(center=(640, 400))
             self.level.display_surface.blit(text, rect)
         
@@ -428,7 +428,7 @@ class Menu:
             rect = text.get_rect(center=(640, 300))
             self.level.display_surface.blit(text, rect)
 
-            text = get_font(40).render(f"Your final grade was {self.level.score} / 10", True, "Blue")
+            text = get_font(40).render(f"Your final grade is {self.level.score} / 10", True, "Blue")
             rect = text.get_rect(center=(640, 400))
             self.level.display_surface.blit(text, rect)
 
@@ -437,9 +437,9 @@ class Menu:
         while True:
             pause_mouse_pos = pygame.mouse.get_pos()
 
-            restart_button = Button(image=None, pos=(640, 450),
+            restart_button = Button(image=None, pos=(640, 490),
                                 text_input="RESTART", font=get_font(35), base_color="white", hovering_color="blue")
-            menu_button = Button(image=None, pos=(640, 530),
+            menu_button = Button(image=None, pos=(640, 570),
                                 text_input="MENU", font=get_font(35), base_color="white", hovering_color="blue")
             
             for button in [restart_button, menu_button]:
@@ -458,5 +458,6 @@ class Menu:
                     if menu_button.check_for_input(pause_mouse_pos):
                         self.current_screen = "main_menu"
                         self.level.restart()
+                        return
 
             pygame.display.update()

@@ -280,6 +280,50 @@ class Player(Entity):
         self.__jump_sound = pygame.mixer.Sound('src/audio/jump_sound.wav')
         self.__jump_sound.set_volume(0.8)
 
+    @property
+    def x(self):
+        """
+        Getter for the x-coordinate
+        """
+        return self.rect.x
+
+    @property
+    def y(self):
+        """
+        Getter for the y-coordinate
+        """
+        return self.rect.y
+
+    @y.setter
+    def y(self, value):
+        """
+        Setter for the y-coordinate
+        """
+        self.rect.y = value
+
+    @x.setter
+    def x(self, value):
+        """
+        Setter for the x-coordinate
+        """
+        self.rect.x = value
+
+    @property
+    def speed(self):
+        """
+        Getter for the speed
+        """
+        return self._speed
+
+    @speed.setter
+    def speed(self, value):
+        """
+        Setter for the speed
+        """
+        if value < 0:
+            raise ValueError("Speed must be a positive number")
+        self._speed = value
+
     def import_character_assets(self):
         """
         Imports character animations.
@@ -1111,9 +1155,8 @@ class Level:
         for index, npc in enumerate(self.npcs.sprites()):
             if not npc.was_answered and pygame.sprite.collide_rect(self.player.sprite, npc):
                 # If a collision is detected, display a text box
-                self.score += npc.question(list_of_questions, index)
+                self.score += npc.question(list_of_questions[self.current_level], index)
 
-    
     def check_collectible_collisions(self):
         """
         Checks for collisions between the player and collectibles.
@@ -1204,7 +1247,7 @@ class Level:
         # self.tiles.draw(self.display_surface)
 
         self.finish.update(self.world_shift)
-        self.finish.draw(self.display_surface)
+        # self.finish.draw(self.display_surface)
         
         self.scroll_x()
 
@@ -1213,24 +1256,19 @@ class Level:
         self.vertical_movement_collision()
         self.player.draw(self.display_surface)
 
-        # self.enemies.update(self.world_shift)
-        # self.enemies.draw(self.display_surface)
-
         self.npcs.update(self.world_shift)
-        # for npc in self.npcs.sprites():
-        #     self.npc_horizontal_movement_collision(npc)
-        self.npcs.draw(self.display_surface)
+        # self.npcs.draw(self.display_surface)
         self.check_npc_collision()
 
         self.collectible.update(self.world_shift)
         self.collectible.draw(self.display_surface)
         self.check_collectible_collisions()
         
-        self.ui.show_health(self.collectibles_collected, 10)  # Exemplo: 10 é o valor máximo de livros a serem coletados
+        self.ui.show_health(self.collectibles_collected, 16.95)  # Display the health bar
         self.ui.show_books(self.collectibles_collected)
 
         self.show_score()
-        
+
         if self.is_completed():
             self.next_level()
 
