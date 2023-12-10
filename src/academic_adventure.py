@@ -104,32 +104,50 @@ class Game:
         None.
         """
         # Game loop
-        self.new()
-        
-        while self.running:            
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
+        try:
+            self.new()
 
-                # Pause the game
-                if event.type == pygame.KEYDOWN:
+            while self.running:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        self.running = False
+
+                    if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_ESCAPE:  # 'ESC' key to pause the game
                             self.menu.current_screen = "pause"
                             self.menu.pause()
 
-            # Update the game state and render the game
-            if self.menu.current_screen == "main_menu":
-                self.menu.main_menu(r"src\graphics\backgrounds\menu_bg.png")
-            elif self.level.game_over:
-                self.menu.game_over()
-            elif self.menu.current_screen == "play":
-                self.level.run()
-                pygame.display.flip()
-                clock.tick(60)
-            elif self.menu.current_screen == "credits":
-                self.menu.credits()
-    
-        pygame.quit()
+                if self.menu.current_screen == "main_menu":
+                    self.menu.main_menu(r"src\graphics\backgrounds\parque2.png")
+                elif self.menu.current_screen == "play":
+                    self.level.run()
+
+                    # Verifica a posição do jogador
+                    if self.level.player.centery > 780:
+                        raise PlayerPositionError("Player position exceeds map limits")
+
+                    pygame.display.flip()
+                    self.clock.tick(60)
+                elif self.menu.current_screen == "credits":
+                    self.menu.credits()
+                elif self.level.game_over:
+                    self.menu.game_over()
+
+        except pygame.error as e:
+            print(f"An error occurred during game execution: {e}")
+        except PlayerPositionError as e:
+            print(f"Player position error: {e}")
+            self.running = False
+        except Exception as e:
+            print(f"An unexpected error occurred during game execution: {e}")
+        finally:
+            pygame.quit()
+
+class PlayerPositionError(Exception):
+    """
+    Custom exception for when player position exceeds a specific value.
+    """
+    pass
 
 if __name__ == "__main__":
     game = Game()

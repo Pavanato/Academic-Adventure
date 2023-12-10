@@ -16,6 +16,7 @@ def import_csv_layout(path):
     -------
     list: A list of strings representing the terrain map.
     """
+    
     terrain_map = []
     with open(path) as map:
         csv_reader = reader(map)

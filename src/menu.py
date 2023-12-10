@@ -3,13 +3,11 @@ import sys
 
 from settings import *
 
-    
-# TODO: Create screen, clock for the main menu. Check if these can be removed
+
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-# TODO: Create the function Game() that has the clock as an entrie
 clock = pygame.time.Clock()
 
-# Auxiliary function
+
 def get_font(size):
     """
     Get a Pygame font object with a specified size.
@@ -23,8 +21,8 @@ def get_font(size):
     -------
     pygame.font.Font
         A Pygame font object.
-
     """
+
     return pygame.font.Font(r"src\graphics\button\font.ttf", size)
 
 
@@ -74,7 +72,6 @@ class Button:
 
     change_color(position)
         Changes the color of the button's text based on the mouse position.
-
     """
 
     def __init__(self, image, pos, text_input, font, base_color, hovering_color):
@@ -104,7 +101,6 @@ class Button:
         Returns
         -------
         None.
-
         """ 
         self.image = image
         self.x_pos = pos[0]
@@ -130,7 +126,6 @@ class Button:
         Returns
         -------
         None.
-
         """
         if self.image is not None:
             screen.blit(self.image, self.rect)
@@ -149,8 +144,8 @@ class Button:
         -------
         bool
             True if the position is within the button's area, False otherwise.
-
         """
+
         return self.rect.collidepoint(position)
 
     def change_color(self, position):
@@ -165,8 +160,8 @@ class Button:
         Returns
         -------
         None.
-
         """
+
         if self.check_for_input(position):
             self.text = self.font.render(self.text_input, True, self.hovering_color)
         else:
@@ -198,8 +193,8 @@ class Menu:
 
     game_over()
         Displays the game over screen with the option to return to the main menu.
-
     """
+
     def __init__(self, level_instance):
         """
         Initializes the Menu instance.
@@ -212,7 +207,6 @@ class Menu:
         Returns
         -------
         None.
-
         """
         self.current_screen = "main_menu"
         self.level = level_instance
@@ -229,11 +223,15 @@ class Menu:
         Returns
         -------
         None.
-
         """
-        background = pygame.image.load(background_image_path)
+        try:
+            background = pygame.image.load(background_image_path)
+        except pygame.error as e:
+            print(f"Error loading menu background image: {e}")
+            background = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
 
         while self.current_screen == "main_menu":
+            
             screen.blit(background, (0, 0)) 
 
             menu_mouse_pos = pygame.mouse.get_pos()
@@ -278,7 +276,11 @@ class Menu:
         -------
         None.
 
+        Returns
+        -------
+        None.
         """
+
         credits_image_pavanato = pygame.image.load("src/graphics/photos_credits/pavanato_photo.png").convert_alpha()
         credits_image_pavanato = pygame.transform.scale(credits_image_pavanato, (150, 150))
 
@@ -348,8 +350,8 @@ class Menu:
         Returns
         -------
         None.
-
         """
+
         while self.current_screen == "pause":
             pause_mouse_pos = pygame.mouse.get_pos()
 
@@ -392,7 +394,6 @@ class Menu:
         Returns
         -------
         None.
-        
         """
 
         fade_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))  # create a new surface
@@ -431,9 +432,7 @@ class Menu:
             rect = text.get_rect(center=(640, 400))
             self.level.display_surface.blit(text, rect)
 
-
         pygame.display.flip()  # update the display
-        print("teasd")
 
         while True:
             pause_mouse_pos = pygame.mouse.get_pos()
