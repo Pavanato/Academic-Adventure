@@ -262,15 +262,17 @@ class Player(Entity):
         self.import_character_assets()
         self.frame_index = 0
         self.animation_speed = 0.10
-        self.image = self.animations['idle_direita'][self.frame_index]
+        self.image = self.animations['idle_right'][self.frame_index]
         self.rect = self.image.get_rect(topleft=self.rect.topleft)
 
+        # Player movement
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 8
         self._gravity = 0.8
         self.jump_speed = -16
 
-        self.status = 'idle_direita'
+        # Player status
+        self.status = 'idle_right'
         self.on_ground = False
         self.on_ceiling = False
         self.on_left = False
@@ -339,7 +341,7 @@ class Player(Entity):
                 
         character_path = 'src/graphics/character/'
         
-        self.animations = {'idle_direita':[],'idle_esquerda':[], 'fall':[], 'walking_right':[], 'menino_andando_esquerda':[], 'run':[], 'jump':[]}
+        self.animations = {'idle_right':[],'idle_left':[], 'running_right':[], 'running_left':[]}
 
         for animation in self.animations.keys():
             full_path = character_path +  animation
@@ -400,20 +402,15 @@ class Player(Entity):
         None.
         """
 
-        if self.direction.y < 0:
-            self.status = 'jump'
-        elif self.direction.y > 1:
-            self.status = 'fall'
+        if self.direction.x > 0:
+            self.status = 'running_right'
+        elif self.direction.x < 0:
+            self.status = 'running_left'
         else:
-            if self.direction.x > 0:
-                self.status = 'walking_right'
-            elif self.direction.x < 0:
-                self.status = 'menino_andando_esquerda'
-            else:
-                if self.status == 'walking_right':
-                    self.status = 'idle_direita'
-                elif self.status == 'menino_andando_esquerda':
-                    self.status = 'idle_esquerda'
+            if self.status == 'running_right':
+                self.status = 'idle_right'
+            elif self.status == 'running_left':
+                self.status = 'idle_left'
 
     def apply_gravity(self):
         """
