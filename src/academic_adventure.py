@@ -13,7 +13,49 @@ from menu import *
 from settings import *
 
 class Game:
+    """
+    The main class representing the game.
+
+    Attributes
+    ----------
+    bg_music : pygame.mixer.Sound
+        The background music for the game.
+
+    screen : pygame.Surface
+        The main game window.
+
+    clock : pygame.time.Clock
+        A clock to control the game's frame rate.
+
+    x : int
+        An example attribute for demonstration purposes.
+
+    running : bool
+        Flag indicating whether the game is currently running.
+
+    Methods
+    -------
+    __init__()
+        Initializes the game, including pygame and the game window.
+
+    new()
+        Initializes a new game, creating a new level and menu.
+
+    run()
+        Runs the main game loop, handling events and updating the game state.
+    """
     def __init__(self) -> None:
+        """
+        Initializes the game
+
+        Parameters
+        ----------
+        None.
+
+        Returns
+        -------
+        None.
+        """
         # Initialize pygame and create window
         pygame.init()
         pygame.mixer.init()
@@ -33,12 +75,33 @@ class Game:
         self.running = True
 
     def new(self):
-        # Initialize a new game
+        """
+        Initializes a new game by creating a new level and menu.
+        
+        Parameters
+        ----------
+        None.
+
+        Returns
+        -------
+        None.
+        """
         self.level = Level(level_list, bg_list, self.screen)
         self.menu = Menu(self.level)
     
 
     def run(self):
+        """
+        Runs the main game loop, handling events and updating the game state.
+
+        Parameters
+        ----------
+        None.
+
+        Returns
+        -------
+        None.
+        """
         self.new()
 
         while self.running:            
